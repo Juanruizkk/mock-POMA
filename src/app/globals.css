@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: #163328;
+  --color-primary-container: #2d4a3e;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #99b9a9;
+  --color-primary-fixed: #c9ead9;
+  --color-primary-fixed-dim: #adcebe;
+  --color-on-primary-fixed: #022016;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-secondary: #5f5e5a;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e5e2dc;
+
+  --color-tertiary: #322e25;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #48443a;
+  --color-on-tertiary-container: #b8b1a5;
+  --color-tertiary-fixed: #eae1d4;
+  --color-tertiary-fixed-dim: #cdc6b9;
+
+  --color-surface: #fcf9f8;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container: #f0eded;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #424844;
+  --color-surface-variant: #e5e2e1;
+
+  --color-outline: #727974;
+  --color-outline-variant: #c1c8c3;
+
+  --color-inverse-surface: #313030;
+  --color-inverse-on-surface: #f3f0ef;
+
+  --font-headline: "Hanken Grotesk", sans-serif;
+  --font-body: "Work Sans", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+.hero-vignette {
+  background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+}
+
+.text-glow {
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.elegant-card-gradient {
+  background: linear-gradient(to top, rgba(22, 51, 40, 0.95) 0%, rgba(22, 51, 40, 0.4) 60%, rgba(0,0,0,0) 100%);
+}
+
+.premium-gradient {
+  background: linear-gradient(180deg, rgba(22, 51, 40, 0.85) 0%, rgba(22, 51, 40, 0.6) 50%, rgba(22, 51, 40, 0.4) 100%);
+}
+
+@keyframes subtle-zoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+
+.animate-subtle-zoom {
+  animation: subtle-zoom 30s infinite alternate linear;
+}
+
+.bento-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bento-card:hover {
+  transform: translateY(-4px);
 }
