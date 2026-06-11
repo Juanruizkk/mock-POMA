@@ -26,23 +26,23 @@ export default function HomePage() {
                 Experiencia Profesional
               </span>
             </div>
-            <h1 className="font-[var(--font-headline)] text-[48px] md:text-[84px] leading-[0.95] font-extrabold text-on-primary mb-8 text-glow uppercase">
+            <h1 className="font-[var(--font-headline)] text-[32px] sm:text-[48px] md:text-[84px] leading-[0.95] font-extrabold text-on-primary mb-8 text-glow uppercase">
               Descubri <br />
               <span className="text-primary-fixed underline decoration-primary-fixed/30 underline-offset-8">
                 Tafi del Valle
               </span>
             </h1>
-            <div className="max-w-xl bg-black/20 backdrop-blur-sm p-8 border-l-4 border-primary-fixed mb-12">
+            <div className="w-full max-w-xl bg-black/20 backdrop-blur-sm p-6 md:p-8 border-l-4 border-primary-fixed mb-12">
               <p className="text-[18px] leading-[28px] text-on-primary font-medium">
                 NATURALEZA, AVENTURA Y CULTURA. Experiencias disenadas por
                 expertos para el viajero estrategico que busca autenticidad y
                 excelencia en el NOA.
               </p>
             </div>
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/excursiones"
-                className="group relative overflow-hidden bg-primary px-10 py-5 md:px-12 md:py-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(22,51,40,0.4)]"
+                className="group relative overflow-hidden bg-primary px-8 py-4 md:px-12 md:py-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(22,51,40,0.4)] text-center"
               >
                 <span className="relative z-10 text-on-primary font-[var(--font-headline)] text-[14px] md:text-[16px] uppercase tracking-[0.25em] font-bold">
                   Ver Excursiones
@@ -51,7 +51,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/contacto"
-                className="border-2 border-on-primary px-10 py-5 md:px-12 md:py-6 text-on-primary font-[var(--font-headline)] text-[14px] md:text-[16px] uppercase tracking-[0.25em] font-bold hover:bg-on-primary hover:text-primary transition-all duration-500"
+                className="border-2 border-on-primary px-8 py-4 md:px-12 md:py-6 text-on-primary font-[var(--font-headline)] text-[14px] md:text-[16px] uppercase tracking-[0.25em] font-bold hover:bg-on-primary hover:text-primary transition-all duration-500 text-center"
               >
                 Contactar
               </Link>
@@ -221,7 +221,7 @@ export default function HomePage() {
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
-              <div className="absolute -bottom-8 -left-4 md:-bottom-10 md:-left-10 bg-surface p-6 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-primary/10">
+              <div className="mt-6 md:mt-0 md:absolute md:-bottom-10 md:-left-10 bg-surface p-6 md:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.4)] border border-primary/10">
                 <div className="flex items-center gap-6 md:gap-8">
                   <div>
                     <div className="flex gap-1 text-primary mb-2">

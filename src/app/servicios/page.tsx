@@ -219,8 +219,8 @@ export default function ServiciosPage() {
 
       {/* CTA */}
       <section className="py-20 md:py-40 px-5 md:px-16 bg-surface-container-lowest border-t border-outline/5 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center relative">
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-primary/5 font-[var(--font-headline)] text-[80px] md:text-[120px] whitespace-nowrap select-none pointer-events-none font-extrabold">
+        <div className="max-w-4xl mx-auto text-center relative overflow-hidden">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-primary/5 font-[var(--font-headline)] text-[48px] md:text-[120px] whitespace-nowrap select-none pointer-events-none font-extrabold">
             CONTACTO
           </div>
           <h2 className="font-[var(--font-headline)] text-3xl md:text-6xl text-primary mb-10 relative z-10 font-extrabold">

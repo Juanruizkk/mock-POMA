@@ -12,7 +12,7 @@ export default function ExcursionesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[500px] md:h-[819px] flex items-center overflow-hidden">
+      <section className="relative h-[600px] md:h-[819px] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-black/45 z-10" />
         <Image
           src="/imagenexcursiones.webp"
@@ -21,9 +21,9 @@ export default function ExcursionesPage() {
           className="object-cover"
           priority
         />
-        <div className="relative z-20 max-w-[1280px] mx-auto px-5 md:px-16 w-full flex justify-end">
-          <div className="max-w-xl text-right">
-            <span className="inline-flex items-center justify-end gap-2 px-3 py-1 bg-surface-container-lowest text-primary text-[12px] uppercase tracking-[0.2em] mb-6 border border-outline-variant font-semibold">
+        <div className="relative z-20 max-w-[1280px] mx-auto px-5 md:px-16 w-full flex md:justify-end">
+          <div className="max-w-xl md:text-right pt-20 md:pt-0">
+            <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/30 text-white text-[12px] uppercase tracking-[0.2em] mb-6 font-semibold">
               <span className="material-symbols-outlined text-[16px]">
                 mountain_flag
               </span>
@@ -32,7 +32,7 @@ export default function ExcursionesPage() {
             <h1 className="font-[var(--font-headline)] text-[36px] md:text-[48px] text-white mb-6 leading-tight drop-shadow-md font-extrabold">
               Excursiones en el Corazon de los Valles
             </h1>
-            <p className="text-[18px] leading-[28px] text-white/80 mb-10">
+            <p className="text-[16px] md:text-[18px] leading-[28px] text-white/80 mb-10">
               Descubra el alma de Tafi del Valle a traves de trayectos curados y
               servicios personalizados disenados para el viajero exigente.
             </p>
