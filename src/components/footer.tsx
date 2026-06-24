@@ -7,7 +7,7 @@ const INSTAGRAM = "https://instagram.com/poma.tafidelvalle";
 const navLinks = [
   { href: "/#inicio", label: "Inicio" },
   { href: "/#quienes", label: "Quiénes Somos" },
-  { href: "/#servicios", label: "Servicios" },
+  { href: "/servicios-y-excursiones", label: "Servicios y Excursiones" },
   { href: "/#galeria", label: "Galería" },
   { href: "/#contacto", label: "Contacto" },
 ];

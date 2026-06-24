@@ -10,6 +10,25 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/servicios",
+        destination: "/servicios-y-excursiones",
+        permanent: true,
+      },
+      {
+        source: "/excursiones",
+        destination: "/servicios-y-excursiones",
+        permanent: true,
+      },
+      {
+        source: "/contacto",
+        destination: "/#contacto",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -104,7 +104,7 @@ export function QuienesSomos() {
             {personas.map((p, i) => (
               <Link
                 key={p.name}
-                href="/excursiones"
+                href="/servicios-y-excursiones"
                 className="group flex-1 flex items-start gap-5 py-7 lg:py-8 transition-colors"
                 style={
                   i === 1

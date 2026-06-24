@@ -34,7 +34,7 @@ export function Servicios() {
 
       <div className="grid lg:grid-cols-12 gap-5">
         <Link
-          href="/excursiones"
+          href="/servicios-y-excursiones"
           className="svc-card group relative lg:col-span-7 rounded-2xl overflow-hidden min-h-[420px] block"
           style={{ border: "1px solid var(--sand)" }}
         >
@@ -87,7 +87,7 @@ export function Servicios() {
         </Link>
 
         <Link
-          href="/excursiones"
+          href="/servicios-y-excursiones"
           className="svc-card group relative lg:col-span-5 rounded-2xl overflow-hidden min-h-[420px] block"
           style={{ border: "1px solid var(--sand)" }}
         >
@@ -141,7 +141,7 @@ export function Servicios() {
 
       <div className="reveal mt-8 flex justify-center">
         <Link
-          href="/excursiones"
+          href="/servicios-y-excursiones"
           className="press-btn inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-[13px] eyebrow text-white"
           style={{ background: "var(--green)" }}
         >

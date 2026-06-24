@@ -2,9 +2,35 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type GalleryImage = { src: string; alt: string };
+type GallerySpan = "big" | "tall" | "wide" | "normal";
+type GalleryImage = {
+  src: string;
+  alt: string;
+  place?: string;
+  span?: GallerySpan;
+};
 
-export function Gallery({ images }: { images: GalleryImage[] }) {
+const spanClass: Record<GallerySpan, string> = {
+  big: "col-span-2 row-span-2",
+  tall: "row-span-2",
+  wide: "col-span-2",
+  normal: "",
+};
+
+export function Gallery({
+  images,
+  previewCount,
+  fit,
+}: {
+  images: GalleryImage[];
+  previewCount?: number;
+  fit?: boolean;
+}) {
+  const visible =
+    previewCount && previewCount < images.length
+      ? images.slice(0, previewCount)
+      : images;
+  const hidden = images.length - visible.length;
   const [index, setIndex] = useState<number | null>(null);
   const open = index !== null;
   const wheelLock = useRef(false);
@@ -62,33 +88,80 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
 
   return (
     <>
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [&>*]:mb-4">
-        {images.map((img, i) => (
+      <div className={fit ? "flex flex-col h-full min-h-0" : ""}>
+      <div
+        className={
+          fit
+            ? "grid grid-cols-2 lg:grid-cols-4 auto-rows-[150px] sm:auto-rows-[200px] lg:auto-rows-auto lg:grid-rows-2 gap-3 grid-flow-row-dense lg:h-full lg:min-h-0"
+            : "grid grid-cols-2 auto-rows-[160px] sm:auto-rows-[220px] lg:auto-rows-[260px] gap-3 grid-flow-row-dense"
+        }
+      >
+        {visible.map((img, i) => (
           <button
             key={img.src}
             onClick={() => setIndex(i)}
             aria-label={`Abrir foto: ${img.alt}`}
-            className="gal-wrap reveal group relative block w-full overflow-hidden rounded-[4px] cursor-zoom-in"
+            className={`gal-wrap reveal group relative block overflow-hidden rounded-[6px] cursor-zoom-in ${
+              spanClass[img.span ?? "normal"]
+            }`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={encodeURI(img.src)}
               alt={img.alt}
-              className="gal-img w-full object-cover"
+              className="gal-img h-full w-full object-cover"
+            />
+            <span
+              className="pointer-events-none absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(22,51,40,0) 35%, rgba(22,51,40,0.72) 100%)",
+              }}
             />
             <span
               className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ background: "rgba(22,51,40,0.28)" }}
             >
               <span
-                className="grid place-items-center h-12 w-12 rounded-full text-2xl"
-                style={{ background: "rgba(250,245,236,0.9)", color: "var(--green)" }}
+                className="grid place-items-center h-11 w-11 rounded-full text-xl"
+                style={{ background: "rgba(250,245,236,0.92)", color: "var(--green)" }}
               >
                 <i className="ti ti-arrows-maximize" />
               </span>
             </span>
+            {img.place && (
+              <span className="pointer-events-none absolute bottom-0 left-0 p-3 lg:p-4 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                <span
+                  className="flex items-center gap-1.5 eyebrow text-[10px] text-white"
+                >
+                  <span style={{ color: "var(--gold-bright)" }}>◈</span>
+                  {img.place}
+                </span>
+              </span>
+            )}
           </button>
         ))}
+      </div>
+
+      {hidden > 0 && (
+        <div
+          className={
+            fit
+              ? "shrink-0 mt-4 flex items-center justify-center gap-3"
+              : "reveal mt-7 flex flex-col items-center gap-2"
+          }
+        >
+          <button
+            onClick={() => setIndex(0)}
+            className="press-btn inline-flex items-center gap-2.5 rounded-full px-7 py-3 text-[12px] eyebrow text-white"
+            style={{ background: "var(--green)" }}
+          >
+            <i className="ti ti-photo text-base" /> Ver las {images.length} fotos
+          </button>
+          <p className="eyebrow text-[10px]" style={{ color: "var(--muted)" }}>
+            +{hidden} fotos más
+          </p>
+        </div>
+      )}
       </div>
 
       {open && (

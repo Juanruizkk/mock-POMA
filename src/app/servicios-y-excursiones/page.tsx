@@ -3,45 +3,117 @@ import Image from "next/image";
 import { ExcursionCards } from "@/components/excursion-cards";
 
 export const metadata: Metadata = {
-  title: "Excursiones",
+  title: "Servicios y Excursiones",
   description:
-    "Excursiones en el Corazon de los Valles. Travesias a pie y en vehiculo por Tafi del Valle.",
+    "Servicio de interprete, salidas en vehiculo y excursiones a pie por Tafi del Valle y los Valles Calchaquies.",
 };
 
-export default function ExcursionesPage() {
+const servicios = [
+  {
+    icon: "record_voice_over",
+    title: "Servicio de Interprete",
+    desc: "Acompanamiento bilingue (espanol / ingles) para que cada relato historico y cultural del valle llegue con total claridad.",
+  },
+  {
+    icon: "airport_shuttle",
+    title: "Salidas en Vehiculo",
+    desc: "Movilidad segura y confortable para grupos y pasajeros individuales, con unidades equipadas y conductores que conocen cada camino.",
+  },
+  {
+    icon: "star_rate",
+    title: "Experiencias a Medida",
+    desc: "Disenamos itinerarios segun tus intereses: desde catas privadas en bodegas de altura hasta picnics en valles virgenes.",
+  },
+];
+
+export default function ServiciosYExcursionesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[600px] md:h-[819px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-black/45 z-10" />
-        <Image
-          src="/imagenexcursiones.webp"
-          alt="Panorama de los Valles Calchaquies"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="relative z-20 max-w-[1280px] mx-auto px-5 md:px-16 w-full flex md:justify-end">
-          <div className="max-w-xl md:text-right pt-20 md:pt-0">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/30 text-white text-[12px] uppercase tracking-[0.2em] mb-6 font-semibold">
-              <span className="material-symbols-outlined text-[16px]">
-                mountain_flag
-              </span>
-              Experiencias Genuinas
+      <section className="relative h-[550px] md:h-[750px] flex items-center overflow-hidden">
+        <div className="absolute inset-0 premium-gradient z-10" />
+        <div className="absolute inset-0">
+          <Image
+            src="/imagenservicios.avif"
+            alt="Valles Calchaquies"
+            fill
+            className="object-cover scale-105"
+            priority
+          />
+        </div>
+        <div className="relative z-20 px-5 md:px-16 max-w-[1280px] mx-auto w-full">
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full mb-10">
+            <span className="material-symbols-outlined text-white text-[18px]">
+              verified
             </span>
-            <h1 className="font-[var(--font-headline)] text-[36px] md:text-[48px] text-white mb-6 leading-tight drop-shadow-md font-extrabold">
-              Excursiones en el Corazon de los Valles
-            </h1>
-            <p className="text-[16px] md:text-[18px] leading-[28px] text-white/80 mb-10">
-              Descubra el alma de Tafi del Valle a traves de trayectos curados y
-              servicios personalizados disenados para el viajero exigente.
-            </p>
+            <span className="text-white font-bold text-[10px] uppercase tracking-[0.2em]">
+              Todo lo que ofrecemos
+            </span>
           </div>
+          <h1 className="font-[var(--font-headline)] text-[36px] md:text-[72px] text-white leading-[1] max-w-4xl mb-8 font-extrabold drop-shadow-2xl">
+            Servicios <br className="hidden md:block" /> y Excursiones
+          </h1>
+          <p className="text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-light">
+            Servicio de interprete, salidas en vehiculo y excursiones a pie:
+            todo el valle, en un solo lugar.
+          </p>
+        </div>
+      </section>
+
+      {/* Servicios */}
+      <section
+        id="servicios"
+        className="py-16 md:py-28 px-5 md:px-16 max-w-[1280px] mx-auto"
+      >
+        <div className="mb-12 md:mb-16 max-w-xl">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container text-on-primary-container text-[12px] uppercase tracking-[0.2em] mb-4 border border-outline-variant font-semibold">
+            <span className="material-symbols-outlined text-[16px]">
+              concierge
+            </span>
+            Nuestros Servicios
+          </span>
+          <h2 className="font-[var(--font-headline)] text-[32px] leading-[40px] text-primary mb-4 font-bold">
+            Como te acompanamos
+          </h2>
+          <p className="text-secondary">
+            Antes, durante y despues de cada salida: lo esencial para que tu
+            visita al valle sea simple y memorable.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {servicios.map((s) => (
+            <div
+              key={s.title}
+              className="bg-surface-container-low rounded-3xl p-8 md:p-10 border border-outline/5 flex flex-col items-start hover:shadow-xl transition-all duration-500"
+            >
+              <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mb-8">
+                <span className="material-symbols-outlined text-white text-2xl">
+                  {s.icon}
+                </span>
+              </div>
+              <h3 className="font-[var(--font-headline)] text-2xl text-primary mb-4 font-semibold">
+                {s.title}
+              </h3>
+              <p className="text-on-surface-variant mb-8 leading-relaxed flex-1">
+                {s.desc}
+              </p>
+              <a
+                href="/#contacto"
+                className="text-primary font-bold text-sm uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary transition-all"
+              >
+                Consultar
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Cards de Excursiones */}
-      <section className="py-16 md:py-24 max-w-[1280px] mx-auto px-5 md:px-16">
+      <section
+        id="excursiones"
+        className="py-16 md:py-24 max-w-[1280px] mx-auto px-5 md:px-16"
+      >
         <div className="mb-12 md:mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container text-on-primary-container text-[12px] uppercase tracking-[0.2em] mb-4 border border-outline-variant font-semibold">
             <span className="material-symbols-outlined text-[16px]">explore</span>

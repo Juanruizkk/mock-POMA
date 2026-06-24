@@ -10,9 +10,9 @@ export default function HomePage() {
     <div style={{ background: "var(--cream)", color: "var(--char)" }}>
       <ScrollEffects />
       <Hero />
-      <QuienesSomos />
       <Servicios />
       <Galeria />
+      <QuienesSomos />
       <Contacto />
     </div>
   );
