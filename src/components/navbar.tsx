@@ -6,115 +6,125 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/excursiones", label: "Excursiones" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#quienes", label: "Quiénes Somos" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#galeria", label: "Galería" },
+  { href: "/#contacto", label: "Contacto" },
 ];
+
+const WHATSAPP = "https://wa.me/5493812032123";
 
 export function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 ${
-        scrolled ? "py-2 shadow-2xl bg-surface/95" : "py-4"
-      }`}
+    <header
+      className="sticky top-0 z-50 backdrop-blur-md border-b"
+      style={{
+        background: "rgba(250,245,236,0.82)",
+        borderColor: "#e8ddc9",
+      }}
     >
-      <div className="flex justify-between items-center px-5 md:px-16 max-w-[1280px] mx-auto">
-        <Link href="/" className="flex items-center gap-3">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+        <Link href="/#inicio" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logopoma.png"
-            alt="PÓMA"
-            width={140}
-            height={80}
-            className="h-14 w-auto object-contain"
+            alt="PÓMA Tafí del Valle"
+            width={52}
+            height={52}
+            className="h-[52px] w-[52px] rounded-full object-cover"
             priority
           />
+          <span className="hidden sm:flex flex-col leading-none">
+            <span
+              className="font-serif text-xl font-semibold"
+              style={{ color: "var(--green)", letterSpacing: "0.04em" }}
+            >
+              PÓMA
+            </span>
+            <span
+              className="eyebrow text-[9px] mt-0.5"
+              style={{ color: "var(--muted)" }}
+            >
+              Tafí del Valle
+            </span>
+          </span>
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden lg:flex items-center gap-12">
+        <ul className="hidden lg:flex items-center gap-9 text-[12px]">
           {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-[13px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
-                pathname === link.href
-                  ? "text-primary border-b-2 border-primary pb-1"
-                  : "text-secondary hover:text-primary"
-              }`}
-            >
-              {link.label}
-            </Link>
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="nav-link eyebrow"
+                style={{ color: "var(--char)" }}
+              >
+                {link.label}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3">
           <Link
-            href="/contacto"
-            className="hidden sm:block text-[13px] font-bold uppercase tracking-[0.2em] text-primary lg:hidden"
+            href="/#contacto"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[12px] eyebrow text-white press-btn transition-transform hover:-translate-y-0.5"
+            style={{ background: "var(--green)" }}
           >
-            Contacto
+            Reservá
           </Link>
           <a
-            href="https://wa.me/5493812032123"
+            href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary text-on-primary px-7 py-3 text-[12px] uppercase tracking-[0.2em] font-bold hover:shadow-[0_8px_30px_rgb(22,51,40,0.3)] active:scale-95 transition-all duration-300 hidden sm:block"
+            aria-label="WhatsApp"
+            className="grid place-items-center h-11 w-11 rounded-full text-lg transition-transform hover:-translate-y-0.5"
+            style={{ background: "var(--sand)", color: "var(--green)" }}
           >
-            Reservar
+            <i className="ti ti-brand-whatsapp" />
           </a>
 
-          {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-primary"
-            aria-label="Menu"
+            className="lg:hidden grid place-items-center h-11 w-11 text-2xl"
+            style={{ color: "var(--green)" }}
+            aria-label="Menú"
           >
-            <span className="material-symbols-outlined text-3xl">
-              {menuOpen ? "close" : "menu"}
-            </span>
+            <i className={menuOpen ? "ti ti-x" : "ti ti-menu-2"} />
           </button>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-surface border-t border-outline-variant/30 px-5 py-6 space-y-4">
+        <div
+          className="lg:hidden border-t px-6 py-6 space-y-4"
+          style={{ background: "var(--cream)", borderColor: "#e8ddc9" }}
+        >
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`block text-[14px] font-bold uppercase tracking-[0.15em] py-2 ${
-                pathname === link.href ? "text-primary" : "text-secondary"
-              }`}
+              className="block eyebrow text-[13px] py-1"
+              style={{ color: "var(--char)" }}
             >
               {link.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/5493812032123"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block bg-primary text-on-primary px-7 py-3 text-[12px] uppercase tracking-[0.2em] font-bold text-center mt-4"
+          <Link
+            href="/#contacto"
+            className="block text-center rounded-full px-5 py-3 text-[12px] eyebrow text-white mt-2"
+            style={{ background: "var(--green)" }}
           >
-            Reservar
-          </a>
+            Reservá
+          </Link>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Work_Sans } from "next/font/google";
+import { Fraunces, Hanken_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+
+const fraunces = Fraunces({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 const hankenGrotesk = Hanken_Grotesk({
   variable: "--font-headline",
@@ -40,11 +48,15 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${hankenGrotesk.variable} ${workSans.variable} scroll-smooth`}
+      className={`${fraunces.variable} ${hankenGrotesk.variable} ${workSans.variable} scroll-smooth`}
     >
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont/tabler-icons.min.css"
           rel="stylesheet"
         />
       </head>
