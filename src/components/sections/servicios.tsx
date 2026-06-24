@@ -1,8 +1,75 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function Servicios() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        // Entrada escalonada y sobria de las dos cards.
+        gsap.from(".svc-card", {
+          opacity: 0,
+          y: 24,
+          scale: 0.985,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.12,
+          clearProps: "transform",
+          scrollTrigger: {
+            trigger: ".svc-grid",
+            start: "top 78%",
+            once: true,
+          },
+        });
+
+        // Parallax interno: la foto se mueve apenas más lento que su card.
+        gsap.utils.toArray<HTMLElement>(".svc-card img").forEach((img) => {
+          gsap.fromTo(
+            img,
+            { yPercent: -6 },
+            {
+              yPercent: 6,
+              ease: "none",
+              scrollTrigger: {
+                trigger: img.closest(".svc-card"),
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        });
+
+        // Bloque verde "Turismo responsable": slide sutil al entrar.
+        gsap.from(".svc-pledge", {
+          opacity: 0,
+          x: 28,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".svc-pledge",
+            start: "top 85%",
+            once: true,
+          },
+        });
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="servicios"
       className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28"
     >
@@ -32,7 +99,7 @@ export function Servicios() {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-5">
+      <div className="svc-grid grid lg:grid-cols-12 gap-5">
         <Link
           href="/servicios-y-excursiones"
           className="svc-card group relative lg:col-span-7 rounded-2xl overflow-hidden min-h-[420px] block"
@@ -42,7 +109,7 @@ export function Servicios() {
           <img
             src="/Fotos Excursiones/imagen-vehiculo.png"
             alt="Recorrido en vehículo por el valle"
-            className="absolute inset-0 w-full h-full object-cover object-top"
+            className="absolute inset-x-0 top-[-8%] w-full h-[116%] object-cover object-top will-change-transform"
           />
           <div
             className="absolute inset-0"
@@ -95,7 +162,7 @@ export function Servicios() {
           <img
             src="/expedicionesimagen.webp"
             alt="Trekking guiado por Naty"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-x-0 top-[-8%] w-full h-[116%] object-cover will-change-transform"
           />
           <div
             className="absolute inset-0"
@@ -151,7 +218,7 @@ export function Servicios() {
       </div>
 
       <div
-        className="reveal mt-5 rounded-2xl px-7 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+        className="svc-pledge mt-5 rounded-2xl px-7 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
         style={{ background: "var(--green)" }}
       >
         <span

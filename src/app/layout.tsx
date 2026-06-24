@@ -3,6 +3,7 @@ import { Fraunces, Hanken_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { SmoothScroll } from "@/components/smooth-scroll";
 
 const fraunces = Fraunces({
   variable: "--font-serif",
@@ -48,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${fraunces.variable} ${hankenGrotesk.variable} ${workSans.variable} scroll-smooth`}
+      className={`${fraunces.variable} ${hankenGrotesk.variable} ${workSans.variable}`}
     >
       <head>
         <link
@@ -61,6 +62,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen antialiased selection:bg-primary-fixed-dim/30 selection:text-primary">
+        <SmoothScroll />
         <Navbar />
         <main>{children}</main>
         <Footer />
