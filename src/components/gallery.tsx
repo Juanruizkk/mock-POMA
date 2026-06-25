@@ -1,6 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type GallerySpan = "big" | "tall" | "wide" | "normal";
 type GalleryImage = {
@@ -35,18 +40,164 @@ export function Gallery({
   const open = index !== null;
   const wheelLock = useRef(false);
   const touchStartX = useRef<number | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  // Visor (lightbox): refs y estado para las transiciones GSAP.
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const figureRef = useRef<HTMLElement>(null);
+  const dirRef = useRef(1); // 1 = siguiente, -1 = anterior
+  const openedRef = useRef(false); // distingue apertura vs. cambio de foto
+  const closeRef = useRef<() => void>(() => setIndex(null));
 
-  const close = useCallback(() => setIndex(null), []);
-  const next = useCallback(
-    () => setIndex((i) => (i === null ? i : (i + 1) % images.length)),
-    [images.length]
+  // Animación de la grilla con GSAP: entrada escalonada + micro-parallax.
+  // Reemplaza el `.reveal` CSS solo para los tiles. Respeta reduced-motion y
+  // atenúa el parallax en móvil. `useGSAP` revierte todo al desmontar.
+  useGSAP(
+    () => {
+      const tiles = gsap.utils.toArray<HTMLElement>(".gal-wrap", gridRef.current);
+      if (!tiles.length) return;
+
+      const mm = gsap.matchMedia();
+      mm.add(
+        {
+          reduce: "(prefers-reduced-motion: reduce)",
+          desktop:
+            "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+          mobile:
+            "(max-width: 1023px) and (prefers-reduced-motion: no-preference)",
+        },
+        (ctx) => {
+          const { reduce, desktop } = ctx.conditions as {
+            reduce: boolean;
+            desktop: boolean;
+            mobile: boolean;
+          };
+          if (reduce) return;
+
+          // Entrada escalonada (fade + leve scale) al entrar la grilla.
+          // No tocamos `y` acá: ese eje queda reservado para el parallax.
+          gsap.from(tiles, {
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.7,
+            ease: "power3.out",
+            stagger: 0.06,
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          });
+
+          // Micro-parallax: cada tile deriva con una amplitud algo distinta
+          // (los más profundos se mueven más) para dar sensación de capas.
+          const amp = desktop ? 10 : 4;
+          tiles.forEach((tile, i) => {
+            const depth = 0.6 + (i % 3) * 0.2; // 0.6 / 0.8 / 1.0
+            const d = amp * depth;
+            gsap.fromTo(
+              tile,
+              { y: d },
+              {
+                y: -d,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: gridRef.current,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true,
+                },
+              }
+            );
+          });
+        }
+      );
+    },
+    { scope: gridRef }
   );
-  const prev = useCallback(
-    () =>
-      setIndex((i) =>
-        i === null ? i : (i - 1 + images.length) % images.length
-      ),
-    [images.length]
+
+  // El cierre dispara la animación de salida (definida en el useGSAP de abajo)
+  // y recién al terminar hace setIndex(null). closeRef se reasigna en cada
+  // apertura con la versión animada / o instantánea bajo reduced-motion.
+  const close = useCallback(() => closeRef.current(), []);
+  const next = useCallback(() => {
+    dirRef.current = 1;
+    setIndex((i) => (i === null ? i : (i + 1) % images.length));
+  }, [images.length]);
+  const prev = useCallback(() => {
+    dirRef.current = -1;
+    setIndex((i) =>
+      i === null ? i : (i - 1 + images.length) % images.length
+    );
+  }, [images.length]);
+
+  // Transiciones del visor: apertura (fade del fondo + fade/scale de la figura),
+  // cambio de foto (crossfade + slide direccional) y cierre (fade-out diferido).
+  // Respeta prefers-reduced-motion. Cleanup automático vía useGSAP.
+  useGSAP(
+    (_context, contextSafe) => {
+      if (index === null) {
+        openedRef.current = false;
+        return;
+      }
+      const reduce = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      // Función de cierre, segura de contexto: anima la salida y desmonta.
+      closeRef.current =
+        contextSafe?.(() => {
+          if (reduce || !overlayRef.current) {
+            setIndex(null);
+            return;
+          }
+          gsap.to(figureRef.current, {
+            opacity: 0,
+            scale: 0.98,
+            duration: 0.25,
+            ease: "power2.in",
+          });
+          gsap.to(overlayRef.current, {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => setIndex(null),
+          });
+        }) ?? (() => setIndex(null));
+
+      if (reduce) {
+        openedRef.current = true;
+        return;
+      }
+
+      if (!openedRef.current) {
+        // Apertura.
+        openedRef.current = true;
+        gsap.fromTo(
+          overlayRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3, ease: "power2.out" }
+        );
+        gsap.fromTo(
+          figureRef.current,
+          { opacity: 0, scale: 0.96 },
+          { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }
+        );
+      } else {
+        // Cambio de foto: la nueva entra con fade + slide en el sentido del gesto.
+        gsap.fromTo(
+          figureRef.current,
+          { opacity: 0, x: 40 * dirRef.current },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power3.out",
+            overwrite: true,
+          }
+        );
+      }
+    },
+    { dependencies: [index], scope: overlayRef }
   );
 
   useEffect(() => {
@@ -90,6 +241,7 @@ export function Gallery({
     <>
       <div className={fit ? "flex flex-col h-full min-h-0" : ""}>
       <div
+        ref={gridRef}
         className={
           fit
             ? "grid grid-cols-2 lg:grid-cols-4 auto-rows-[150px] sm:auto-rows-[200px] lg:auto-rows-auto lg:grid-rows-2 gap-3 grid-flow-row-dense lg:h-full lg:min-h-0"
@@ -101,7 +253,7 @@ export function Gallery({
             key={img.src}
             onClick={() => setIndex(i)}
             aria-label={`Abrir foto: ${img.alt}`}
-            className={`gal-wrap reveal group relative block overflow-hidden rounded-[6px] cursor-zoom-in ${
+            className={`gal-wrap group relative block overflow-hidden rounded-[6px] cursor-zoom-in ${
               spanClass[img.span ?? "normal"]
             }`}
           >
@@ -166,6 +318,7 @@ export function Gallery({
 
       {open && (
         <div
+          ref={overlayRef}
           className="fixed inset-0 z-[100] flex items-center justify-center"
           style={{ background: "rgba(15,28,22,0.94)" }}
           onClick={close}
@@ -207,6 +360,7 @@ export function Gallery({
           </button>
 
           <figure
+            ref={figureRef}
             className="flex flex-col items-center gap-4 px-14 sm:px-20 w-full max-w-5xl"
             onClick={(e) => e.stopPropagation()}
           >

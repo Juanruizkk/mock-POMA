@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { ExcursionCards } from "@/components/excursion-cards";
+import { StaggerReveal } from "@/components/stagger-reveal";
+import { InkBleed } from "@/components/ink-bleed";
+import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "Servicios y Excursiones",
@@ -11,18 +13,21 @@ export const metadata: Metadata = {
 const servicios = [
   {
     icon: "record_voice_over",
-    title: "Servicio de Interprete",
-    desc: "Acompanamiento bilingue (espanol / ingles) para que cada relato historico y cultural del valle llegue con total claridad.",
+    eyebrow: "Idiomas",
+    title: "Servicio de Intérprete",
+    desc: "Acompañamiento bilingüe (español / inglés) para que cada relato histórico y cultural del valle llegue con total claridad.",
   },
   {
     icon: "airport_shuttle",
-    title: "Salidas en Vehiculo",
+    eyebrow: "Movilidad",
+    title: "Salidas en Vehículo",
     desc: "Movilidad segura y confortable para grupos y pasajeros individuales, con unidades equipadas y conductores que conocen cada camino.",
   },
   {
     icon: "star_rate",
+    eyebrow: "Personalización",
     title: "Experiencias a Medida",
-    desc: "Disenamos itinerarios segun tus intereses: desde catas privadas en bodegas de altura hasta picnics en valles virgenes.",
+    desc: "Diseñamos itinerarios según tus intereses: desde catas privadas en bodegas de altura hasta picnics en valles vírgenes.",
   },
 ];
 
@@ -30,410 +35,420 @@ export default function ServiciosYExcursionesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[550px] md:h-[750px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 premium-gradient z-10" />
-        <div className="absolute inset-0">
-          <Image
+      <section
+        className="relative overflow-hidden"
+        style={{ minHeight: "100vh" }}
+      >
+        {/* Imagen */}
+        <div
+          className="absolute inset-0 z-0 overflow-hidden"
+          style={{ background: "var(--deepgreen)" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/imagenservicios.avif"
-            alt="Valles Calchaquies"
-            fill
-            className="object-cover scale-105"
-            priority
+            alt="Valles Calchaquíes"
+            className="absolute inset-x-0 top-[-8%] w-full h-[120%] object-cover will-change-transform"
           />
         </div>
-        <div className="relative z-20 px-5 md:px-16 max-w-[1280px] mx-auto w-full">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full mb-10">
-            <span className="material-symbols-outlined text-white text-[18px]">
-              verified
-            </span>
-            <span className="text-white font-bold text-[10px] uppercase tracking-[0.2em]">
-              Todo lo que ofrecemos
-            </span>
+
+        {/* Gradiente vertical */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(22,51,40,0.45) 0%, rgba(22,51,40,0.22) 45%, rgba(22,51,40,0.92) 100%)",
+          }}
+        />
+
+        {/* Gradiente horizontal */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(15,28,22,0.45) 0%, rgba(15,28,22,0) 62%)",
+          }}
+        />
+
+        {/* Noise */}
+        <div className="absolute inset-0 z-10 noise opacity-[0.12] mix-blend-overlay" />
+
+        {/* Contenido */}
+        <div
+          className="relative z-20 max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-center"
+          style={{ minHeight: "100vh" }}
+        >
+          <div className="max-w-2xl pt-24 pb-32">
+            <p
+              className="reveal eyebrow text-[12px] mb-6"
+              style={{ color: "#e6c68a" }}
+            >
+              Tafí del Valle · Tucumán, Argentina
+            </p>
+
+            <InkBleed
+              as="h1"
+              className="font-serif text-white leading-[0.95] tracking-[-0.02em] text-6xl md:text-7xl lg:text-[5.5rem] font-medium"
+            >
+              Servicios{" "}
+              <span className="italic font-normal" style={{ color: "#e7b24a" }}>
+                y excursiones
+              </span>
+              <br />
+              en Tafí del Valle
+            </InkBleed>
+
+            <StaggerReveal>
+              <p
+                className="text-lg md:text-xl mt-7 max-w-xl leading-relaxed"
+                style={{ color: "rgba(245,241,236,0.92)" }}
+              >
+                Intérprete bilingüe, salidas en vehículo y trekking guiado —
+                todo el valle, en un solo lugar.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-10">
+                <a
+                  href="#excursiones"
+                  className="press-btn inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[13px] eyebrow text-white"
+                  style={{ background: "var(--green)" }}
+                >
+                  Ver excursiones <i className="ti ti-arrow-right text-base" />
+                </a>
+                <a
+                  href="https://wa.me/5493812032123"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press-btn inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[13px] eyebrow"
+                  style={{
+                    background: "rgba(250,245,236,0.14)",
+                    color: "var(--cream)",
+                    border: "1.5px solid rgba(250,245,236,0.55)",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  Hablá con nosotros
+                </a>
+              </div>
+            </StaggerReveal>
           </div>
-          <h1 className="font-[var(--font-headline)] text-[36px] md:text-[72px] text-white leading-[1] max-w-4xl mb-8 font-extrabold drop-shadow-2xl">
-            Servicios <br className="hidden md:block" /> y Excursiones
-          </h1>
-          <p className="text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-light">
-            Servicio de interprete, salidas en vehiculo y excursiones a pie:
-            todo el valle, en un solo lugar.
-          </p>
+        </div>
+
+        {/* Footer line */}
+        <div className="absolute z-20 bottom-8 left-6 lg:left-10 flex items-center gap-3">
+          <span className="h-px w-10" style={{ background: "var(--gold)" }} />
+          <span className="eyebrow text-[11px] text-white/80">
+            Servicios · Poma · Tafí del Valle
+          </span>
         </div>
       </section>
 
       {/* Servicios */}
       <section
         id="servicios"
-        className="py-16 md:py-28 px-5 md:px-16 max-w-[1280px] mx-auto"
+        className="relative overflow-hidden py-10 md:py-16"
+        style={{ background: "var(--cream)" }}
       >
-        <div className="mb-12 md:mb-16 max-w-xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container text-on-primary-container text-[12px] uppercase tracking-[0.2em] mb-4 border border-outline-variant font-semibold">
-            <span className="material-symbols-outlined text-[16px]">
-              concierge
-            </span>
-            Nuestros Servicios
-          </span>
-          <h2 className="font-[var(--font-headline)] text-[32px] leading-[40px] text-primary mb-4 font-bold">
-            Como te acompanamos
-          </h2>
-          <p className="text-secondary">
-            Antes, durante y despues de cada salida: lo esencial para que tu
-            visita al valle sea simple y memorable.
-          </p>
-        </div>
+        <div className="absolute inset-0 noise opacity-[0.04]" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {servicios.map((s) => (
-            <div
-              key={s.title}
-              className="bg-surface-container-low rounded-3xl p-8 md:p-10 border border-outline/5 flex flex-col items-start hover:shadow-xl transition-all duration-500"
+        <div className="relative max-w-[1280px] mx-auto px-5 md:px-16">
+          {/* Header */}
+          <div className="mb-8 md:mb-10 max-w-xl">
+            <span
+              className="inline-flex items-center gap-2 eyebrow text-[10px] mb-5"
+              style={{ color: "var(--terra)" }}
             >
-              <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center mb-8">
-                <span className="material-symbols-outlined text-white text-2xl">
-                  {s.icon}
-                </span>
+              <span className="material-symbols-outlined text-[14px]">concierge</span>
+              Nuestros Servicios
+            </span>
+            <InkBleed
+              as="h2"
+              className="font-[var(--font-headline)] text-[32px] md:text-[40px] leading-[1.1] font-bold mb-4"
+              style={{ color: "var(--deepgreen)" }}
+            >
+              Cómo te acompañamos
+            </InkBleed>
+            <p style={{ color: "var(--muted)" }} className="text-[15px] leading-relaxed">
+              Antes, durante y después de cada salida: lo esencial para que tu
+              visita al valle sea simple y memorable.
+            </p>
+          </div>
+
+          {/* Filas editoriales */}
+          <div
+            className="h-px w-full"
+            style={{ background: "rgba(192,138,45,0.18)" }}
+          />
+
+          <StaggerReveal y={20}>
+            {servicios.map((s, i) => (
+              <div key={s.title}>
+                <div className="svc-card group flex items-center gap-6 md:gap-10 py-5 md:py-6 px-2 transition-all duration-300 cursor-default">
+                  {/* Ordinal decorativo */}
+                  <span
+                    className="font-[var(--font-headline)] text-[56px] md:text-[72px] leading-none shrink-0 w-16 md:w-20 select-none"
+                    style={{ color: "rgba(192,138,45,0.22)" }}
+                    aria-hidden="true"
+                  >
+                    0{i + 1}
+                  </span>
+
+                  {/* Texto */}
+                  <div className="flex-1 min-w-0">
+                    <p
+                      className="eyebrow text-[10px] mb-2"
+                      style={{ color: "var(--terra)" }}
+                    >
+                      {s.eyebrow}
+                    </p>
+                    <h3
+                      className="font-[var(--font-headline)] text-[22px] md:text-[28px] font-bold leading-tight mb-2"
+                      style={{ color: "var(--deepgreen)" }}
+                    >
+                      {s.title}
+                    </h3>
+                    <p
+                      className="text-[15px] leading-relaxed max-w-lg"
+                      style={{ color: "var(--muted)" }}
+                    >
+                      {s.desc}
+                    </p>
+                  </div>
+
+                  {/* Ícono */}
+                  <div
+                    className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+                    style={{
+                      border: "1px solid rgba(192,138,45,0.35)",
+                      color: "var(--gold)",
+                    }}
+                  >
+                    <span className="material-symbols-outlined text-xl">{s.icon}</span>
+                  </div>
+                </div>
+
+                {/* Hairline */}
+                <div
+                  className="h-px w-full"
+                  style={{ background: "rgba(192,138,45,0.18)" }}
+                />
               </div>
-              <h3 className="font-[var(--font-headline)] text-2xl text-primary mb-4 font-semibold">
-                {s.title}
-              </h3>
-              <p className="text-on-surface-variant mb-8 leading-relaxed flex-1">
-                {s.desc}
-              </p>
-              <a
-                href="/#contacto"
-                className="text-primary font-bold text-sm uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary transition-all"
-              >
-                Consultar
-              </a>
-            </div>
-          ))}
+            ))}
+          </StaggerReveal>
         </div>
       </section>
 
       {/* Cards de Excursiones */}
       <section
         id="excursiones"
-        className="py-16 md:py-24 max-w-[1280px] mx-auto px-5 md:px-16"
+        className="relative overflow-hidden"
+        style={{ background: "var(--sand-soft)" }}
       >
-        <div className="mb-12 md:mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary-container text-on-primary-container text-[12px] uppercase tracking-[0.2em] mb-4 border border-outline-variant font-semibold">
-            <span className="material-symbols-outlined text-[16px]">explore</span>
-            Todas las Excursiones
-          </span>
-          <h2 className="font-[var(--font-headline)] text-[32px] leading-[40px] text-primary mb-4 font-bold">
-            Elegí tu Aventura
-          </h2>
-          <p className="text-secondary max-w-xl">
-            Desde caminatas familiares hasta expediciones de jornada completa —
-            cada salida está guiada por expertos locales.
-          </p>
-        </div>
+        <div className="absolute inset-0 noise opacity-[0.05]" />
 
-        <ExcursionCards />
-      </section>
+        {/* Header editorial */}
+        <div className="relative max-w-[1280px] mx-auto px-5 md:px-16 pt-10 md:pt-14 pb-6 md:pb-8">
 
-      {/* Travesias a Pie */}
-      <section className="py-16 md:py-24 max-w-[1280px] mx-auto px-5 md:px-16">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
-          <div className="max-w-xl">
-            <h2 className="font-[var(--font-headline)] text-[32px] leading-[40px] text-primary mb-4 font-bold">
-              Travesias a Pie
-            </h2>
-            <p className="text-secondary">
-              Rutas disenadas para conectar con la naturaleza virgen de Tucuman,
-              desde ascensos recreativos hasta desafios de jornada completa.
-            </p>
+          {/* Fila superior: eyebrow ↔ contador */}
+          <div className="flex items-center justify-between mb-4">
+            <Reveal y={10}>
+              <p
+                className="eyebrow text-[10px]"
+                style={{ color: "var(--terra)" }}
+              >
+                Todas las Excursiones
+              </p>
+            </Reveal>
+            <Reveal y={10}>
+              <div className="flex items-baseline gap-1.5">
+                <span
+                  className="font-[var(--font-headline)] font-black leading-none"
+                  style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "rgba(163,79,53,0.18)" }}
+                  aria-hidden="true"
+                >
+                  14
+                </span>
+                <span
+                  className="eyebrow text-[9px]"
+                  style={{ color: "var(--terra)", opacity: 0.6 }}
+                >
+                  destinos
+                </span>
+              </div>
+            </Reveal>
           </div>
-          <div className="flex gap-4">
-            <span className="flex items-center gap-1 text-[12px] text-outline font-semibold">
-              <span className="material-symbols-outlined text-[18px]">
-                footprint
-              </span>{" "}
-              Trekkings
+
+          {/* Hairline */}
+          <div className="h-px w-full mb-5" style={{ background: "rgba(192,138,45,0.2)" }} />
+
+          {/* Headline */}
+          <InkBleed
+            as="h2"
+            className="font-[var(--font-headline)] font-extrabold leading-[0.92] tracking-tight mb-5"
+            style={{
+              fontSize: "clamp(36px, 6vw, 64px)",
+              color: "var(--deepgreen)",
+            }}
+          >
+            Elegí tu<br />
+            <span
+              className="italic font-medium"
+              style={{ color: "var(--terra)", WebkitTextStroke: "0px" }}
+            >
+              Aventura
             </span>
-          </div>
-        </div>
+          </InkBleed>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Baja Intensidad */}
-          <div className="md:col-span-4 bg-surface-container-low p-8 md:p-10 border border-tertiary-fixed-dim bento-card flex flex-col justify-between min-h-[380px]">
-            <div>
-              <div className="w-12 h-12 bg-primary flex items-center justify-center rounded-full mb-8">
-                <span className="material-symbols-outlined text-white">
-                  hiking
-                </span>
+          {/* Descripción + ornamento */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+            <Reveal y={12} className="max-w-md">
+              <p className="text-[15px] leading-relaxed" style={{ color: "var(--muted)" }}>
+                Desde caminatas familiares hasta expediciones de jornada completa —
+                cada salida está guiada por expertos locales.
+              </p>
+            </Reveal>
+
+            {/* Ornamento: icono explorar */}
+            <Reveal y={12} className="shrink-0 hidden sm:flex items-center gap-3 pb-1">
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center"
+                style={{ border: "1px solid rgba(192,138,45,0.3)", color: "var(--gold)" }}
+              >
+                <span className="material-symbols-outlined text-[18px]">explore</span>
               </div>
-              <h3 className="font-[var(--font-headline)] text-[24px] text-primary mb-2 uppercase tracking-wide font-semibold">
-                Baja Intensidad
-              </h3>
-              <p className="text-secondary mb-8">
-                Ideal para familias y contemplacion.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-center justify-between border-b border-outline-variant pb-2">
-                  <span className="font-semibold text-primary">
-                    Loma La Cruz
-                  </span>
-                  <span className="text-[12px] text-secondary font-semibold">
-                    3 horas
-                  </span>
-                </li>
-                <li className="flex items-center justify-between border-b border-outline-variant pb-2">
-                  <span className="font-semibold text-primary">
-                    Cerro El Pelado
-                  </span>
-                  <span className="text-[12px] text-secondary font-semibold">
-                    3 horas
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Featured Image */}
-          <div className="md:col-span-8 group relative overflow-hidden h-[300px] md:h-[400px]">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF-Syyd9s-pCaHLHK2kUiFBiNAh7ZCxyQX8LetPHFfxhpDCeq2XVNur2XtQ-9lKWRFo0hT9HEa6POkU4rBMw9fXWpuKgJwJERbC5qSW9XGBPFcOBZDJCm92mkGXOIo04M3xXyHyiiZ_wEgf74aQbIhVUHeauIuhFtmruSZuU1Z1Sf8-I2xoFpjdyZ1WtWT2kYmu5hr0fXNNXfZ5mU9evEPuzi4XYid1a1v8PKzo_fl568MaE8XzIGoOcw3JWkFKwCc2Ih-4vU_oC0"
-              alt="Vistas Panoramicas de la Villa"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-8 left-8 text-white">
-              <p className="text-[12px] uppercase tracking-widest mb-2 font-semibold">
-                Destacado
-              </p>
-              <h4 className="font-[var(--font-headline)] text-[24px] font-semibold">
-                Vistas Panoramicas de la Villa
-              </h4>
-            </div>
-          </div>
-
-          {/* Media Intensidad */}
-          <div className="md:col-span-7 bg-surface-container-high p-8 md:p-10 border border-tertiary-fixed-dim bento-card min-h-[300px]">
-            <div className="w-12 h-12 bg-primary flex items-center justify-center rounded-full mb-8">
-              <span className="material-symbols-outlined text-white">
-                water_drop
+              <span className="eyebrow text-[9px]" style={{ color: "rgba(192,138,45,0.55)" }}>
+                Tafí del Valle<br />Tucumán · Argentina
               </span>
-            </div>
-            <h3 className="font-[var(--font-headline)] text-[24px] text-primary mb-2 uppercase tracking-wide font-semibold">
-              Media Intensidad
-            </h3>
-            <p className="text-secondary mb-10">
-              Rutas hacia los tesoros hidricos del valle.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-6 bg-surface-container-lowest border border-outline-variant">
-                <p className="font-semibold text-primary mb-1">
-                  Cascada Los Alisos
-                </p>
-                <div className="flex items-center gap-2 text-secondary">
-                  <span className="material-symbols-outlined text-[18px]">
-                    schedule
-                  </span>
-                  <span className="text-[12px] font-semibold">3 horas</span>
-                </div>
-              </div>
-              <div className="p-6 bg-surface-container-lowest border border-outline-variant">
-                <p className="font-semibold text-primary mb-1">
-                  Cascada la Costa
-                </p>
-                <div className="flex items-center gap-2 text-secondary">
-                  <span className="material-symbols-outlined text-[18px]">
-                    schedule
-                  </span>
-                  <span className="text-[12px] font-semibold">3 horas</span>
-                </div>
-              </div>
-            </div>
+            </Reveal>
           </div>
 
-          {/* La Cienaga */}
-          <div className="md:col-span-5 bg-primary p-8 md:p-10 bento-card text-on-primary flex flex-col justify-between min-h-[300px]">
-            <div>
-              <div className="inline-block px-3 py-1 border border-on-primary/30 text-[12px] uppercase mb-6 font-semibold tracking-[0.05em]">
-                Desafio Epico
-              </div>
-              <h3 className="font-[var(--font-headline)] text-[24px] mb-4 uppercase tracking-wide font-semibold">
-                La Cienaga
-              </h3>
-              <p className="text-on-primary/80 mb-8 leading-relaxed">
-                Una travesia tecnica de jornada completa para aventureros
-                experimentados. Un viaje al silencio de las cumbres.
-              </p>
-            </div>
-            <div className="flex items-center justify-between border-t border-on-primary/20 pt-6">
-              <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined">timer</span>
-                <span className="font-[var(--font-headline)] text-[24px] font-semibold">
-                  8 HORAS
-                </span>
-              </div>
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </div>
-          </div>
+          {/* Hairline antes de las cards */}
+          <div className="h-px w-full mt-7" style={{ background: "rgba(192,138,45,0.2)" }} />
         </div>
-      </section>
 
-      {/* Excursiones en Vehiculo */}
-      <section className="bg-surface-container py-16 md:py-24">
-        <div className="max-w-[1280px] mx-auto px-5 md:px-16">
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            <div className="md:w-1/3 md:sticky md:top-32">
-              <h2 className="font-[var(--font-headline)] text-[32px] leading-[40px] text-primary mb-6 font-bold">
-                Excursiones en Vehiculo
-              </h2>
-              <p className="text-secondary mb-10 leading-relaxed">
-                Recorridos de confort a bordo de nuestras unidades equipadas.
-                Descubra los hitos culturales y geograficos con la guia de
-                expertos locales.
-              </p>
-              <div className="space-y-6">
-                <div className="flex gap-4 p-6 bg-surface border border-outline-variant">
-                  <span className="material-symbols-outlined text-primary text-[32px]">
-                    directions_car
-                  </span>
-                  <div>
-                    <h4 className="font-bold text-primary">
-                      Privacidad Garantizada
-                    </h4>
-                    <p className="text-[12px] text-secondary font-semibold">
-                      Minimo 2 personas por salida
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="md:w-2/3 grid grid-cols-1 gap-6">
-              {/* POMA Exclusive */}
-              <div className="bg-surface p-6 md:p-8 border border-outline-variant flex flex-col md:flex-row gap-8 items-center group">
-                <div className="md:w-1/3 overflow-hidden w-full relative h-48">
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYz70Yi4pBi5YF-P9nXAqWSp_WpO3V0XAAS7LdL1RVqySHd-I6Ixp6dNm96FnEDqOC-fl8bHjsy-4HJE4-ZE3vgtJmTeqgWr8HJrJyCODV13xHh3uolqbpy2MGGfu8PDvcjvKG5DzmrXz1UeznB-6fUxOIfb2lmUAH-rz80ia5pgJ5jLDc-cmmc6SD99ybS-ih4_fOe-QjO_dgZt5feRCFQkDML6FQg-MT8qyc0N88y-ggd6Oyz7ZYdoR9fhP-ghJA26XNWAU8MjY"
-                    alt="Excursion en vehiculo"
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="md:w-2/3">
-                  <h3 className="font-[var(--font-headline)] text-[24px] text-primary mb-4 uppercase font-semibold">
-                    &quot;POMA&quot; Exclusive
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 border border-tertiary-fixed-dim bg-surface-container-low">
-                      <p className="text-[12px] text-secondary uppercase mb-1 font-semibold">
-                        Clasico
-                      </p>
-                      <p className="font-bold">Vuelta al Valle</p>
-                      <p className="text-[12px] text-primary font-semibold">
-                        4 HORAS
-                      </p>
-                    </div>
-                    <div className="p-4 border border-tertiary-fixed-dim bg-surface-container-low">
-                      <p className="text-[12px] text-secondary uppercase mb-1 font-semibold">
-                        Paisaje
-                      </p>
-                      <p className="font-bold">Vuelta al Lago</p>
-                      <p className="text-[12px] text-primary font-semibold">
-                        2 HORAS
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Expediciones al Norte */}
-              <div className="bg-primary p-8 md:p-12 text-on-primary border border-primary relative overflow-hidden">
-                <div className="relative z-10">
-                  <h3 className="font-[var(--font-headline)] text-[24px] mb-8 uppercase tracking-[0.1em] font-semibold">
-                    Expediciones al Norte
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-8">
-                    {[
-                      {
-                        name: "Quilmes",
-                        desc: "Historia Precolombina",
-                      },
-                      {
-                        name: "Cafayate (Salta)",
-                        desc: "Minimo 4 personas",
-                      },
-                      {
-                        name: "Colalao del Valle",
-                        desc: "Tradicion y Valles",
-                      },
-                      {
-                        name: "Santa Maria",
-                        desc: "Ruta de la Capilla",
-                      },
-                      {
-                        name: "Ruta del Vino",
-                        desc: "Experiencia Sommelier (Reservar con 1 semana)",
-                      },
-                    ].map((exp) => (
-                      <div
-                        key={exp.name}
-                        className="border-l border-on-primary/20 pl-6"
-                      >
-                        <h4 className="text-[18px] font-bold mb-1">
-                          {exp.name}
-                        </h4>
-                        <p className="text-[12px] text-on-primary/60 font-semibold">
-                          {exp.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="absolute -right-20 -bottom-20 opacity-5">
-                  <span className="material-symbols-outlined text-[300px]">
-                    explore
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Cards */}
+        <div className="relative max-w-[1280px] mx-auto px-5 md:px-16 pb-16 md:pb-24">
+          <ExcursionCards />
         </div>
       </section>
 
       {/* Politicas de Reserva */}
-      <section className="py-16 md:py-24 max-w-[1280px] mx-auto px-5 md:px-16">
-        <div className="bg-surface-container-highest border border-outline p-8 md:p-20 relative overflow-hidden text-center">
-          <div className="max-w-3xl mx-auto relative z-10">
-            <div className="flex justify-center mb-8">
-              <div className="w-16 h-16 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
-                <span className="material-symbols-outlined text-[32px]">
-                  payments
+      <section
+        className="relative overflow-hidden py-16 md:py-24"
+        style={{ background: "var(--deepgreen)" }}
+      >
+        {/* Textura */}
+        <div className="absolute inset-0 noise opacity-[0.07]" />
+
+        {/* Hairlines */}
+        <div className="absolute top-0 inset-x-0 h-px" style={{ background: "rgba(224,176,85,0.25)" }} />
+        <div className="absolute bottom-0 inset-x-0 h-px" style={{ background: "rgba(224,176,85,0.25)" }} />
+
+        {/* Watermark "50%" de fondo */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 font-[var(--font-headline)] font-black leading-none select-none"
+          style={{
+            fontSize: "clamp(180px, 28vw, 340px)",
+            color: "rgba(224,176,85,0.04)",
+            letterSpacing: "-0.04em",
+          }}
+        >
+          50%
+        </span>
+
+        <div className="relative max-w-[1280px] mx-auto px-5 md:px-16">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+            {/* Sello circular */}
+            <Reveal y={24} scale={0.94} className="shrink-0">
+              <div
+                className="w-44 h-44 md:w-52 md:h-52 rounded-full flex flex-col items-center justify-center gap-1"
+                style={{
+                  border: "1.5px dashed rgba(224,176,85,0.45)",
+                  background: "rgba(224,176,85,0.05)",
+                  boxShadow: "0 0 60px rgba(224,176,85,0.06) inset",
+                }}
+              >
+                <span
+                  className="font-[var(--font-headline)] font-black leading-none"
+                  style={{ fontSize: "clamp(40px, 8vw, 56px)", color: "var(--gold-bright)" }}
+                >
+                  50%
+                </span>
+                <span
+                  className="eyebrow text-[8px] text-center px-4 leading-snug"
+                  style={{ color: "rgba(224,176,85,0.55)" }}
+                >
+                  seña al<br />reservar
                 </span>
               </div>
-            </div>
-            <h2 className="font-[var(--font-headline)] text-[32px] leading-[40px] text-primary mb-6 uppercase tracking-wider font-bold">
-              Politicas de Reserva
-            </h2>
-            <p className="text-[18px] leading-[28px] text-secondary mb-12">
-              Para garantizar la exclusividad y coordinacion de nuestros guias,
-              todas las excursiones requieren una{" "}
-              <span className="text-primary font-bold">Sena del 50%</span> al
-              momento de la reserva.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                className="bg-primary text-on-primary px-8 md:px-10 py-5 font-[var(--font-headline)] text-[14px] md:text-[16px] font-bold tracking-widest hover:bg-primary-container transition-all flex items-center justify-center gap-3"
-                href="https://wa.me/5493812032123"
-                target="_blank"
-                rel="noopener noreferrer"
+            </Reveal>
+
+            {/* Contenido */}
+            <div className="flex-1 flex flex-col gap-5">
+              <p
+                className="reveal eyebrow text-[10px]"
+                style={{ color: "var(--gold-bright)" }}
               >
-                <span className="material-symbols-outlined">chat</span>
-                RESERVAR POR WHATSAPP
-              </a>
-              <a
-                className="border border-primary text-primary px-8 md:px-10 py-5 font-[var(--font-headline)] text-[14px] md:text-[16px] font-bold tracking-widest hover:bg-surface-container-low transition-all flex items-center justify-center gap-3"
-                href="tel:+5493812032123"
+                Políticas de Reserva
+              </p>
+
+              <InkBleed
+                as="h2"
+                className="font-serif text-[28px] md:text-[38px] font-medium text-white leading-tight"
               >
-                <span className="material-symbols-outlined">call</span>
-                CONSULTAR TARIFAS
-              </a>
+                Tu aventura empieza{" "}
+                <em className="not-italic" style={{ color: "var(--gold-bright)" }}>con una seña</em>
+              </InkBleed>
+
+              <StaggerReveal y={16}>
+              <p className="text-[15px] leading-relaxed max-w-lg" style={{ color: "rgba(245,241,236,0.65)" }}>
+                Para garantizar la exclusividad y coordinación de nuestros guías,
+                todas las excursiones requieren una{" "}
+                <span className="text-white font-semibold">seña del 50%</span>{" "}
+                al momento de la reserva.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://wa.me/5493812032123"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press-btn inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full eyebrow text-[12px] transition-opacity hover:opacity-90"
+                  style={{ background: "var(--gold-bright)", color: "var(--deepgreen)" }}
+                >
+                  <i className="ti ti-brand-whatsapp text-lg" />
+                  Reservar por WhatsApp
+                </a>
+                <a
+                  href="tel:+5493812032123"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full eyebrow text-[12px] transition-colors hover:bg-white/5"
+                  style={{
+                    border: "1px solid rgba(224,176,85,0.3)",
+                    color: "rgba(255,255,255,0.6)",
+                  }}
+                >
+                  <i className="ti ti-phone text-base" />
+                  Consultar tarifas
+                </a>
+              </div>
+              </StaggerReveal>
             </div>
+
+          </div>{/* /flex row sello + contenido */}
+
+          {/* Pie de ticket */}
+          <div
+            className="mt-12 pt-5 flex items-center gap-4"
+            style={{ borderTop: "1px solid rgba(224,176,85,0.12)" }}
+          >
+            <span className="eyebrow text-[8px]" style={{ color: "rgba(224,176,85,0.35)" }}>
+              Poma · Tafí del Valle · Tucumán
+            </span>
+            <div className="flex-1 h-px" style={{ background: "rgba(224,176,85,0.08)" }} />
+            <span className="eyebrow text-[8px]" style={{ color: "rgba(224,176,85,0.35)" }}>
+              Política de Reserva 2025
+            </span>
           </div>
         </div>
       </section>

@@ -1,3 +1,10 @@
+import { InkBleed } from "@/components/ink-bleed";
+import { StaggerReveal } from "@/components/stagger-reveal";
+import { Reveal } from "@/components/reveal";
+import { SepCerros } from "@/components/separators";
+// Alternativa minimalista (descomentar este import y su uso más abajo):
+// import { SepHairline } from "@/components/separators";
+
 const WHATSAPP = "https://wa.me/5493812032123";
 const INSTAGRAM = "https://instagram.com/poma.tafidelvalle";
 
@@ -10,26 +17,12 @@ export function Contacto() {
     >
       <div className="absolute inset-0 noise opacity-[0.07]" />
 
-      {/* ── Costura: silueta de cerros (transición desde Quiénes Somos) ── */}
-      <svg
-        viewBox="0 0 1440 110"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        className="relative block w-full h-[48px] sm:h-[72px] lg:h-[96px]"
-      >
-        <path
-          d="M0,110 V66 L150,30 L330,64 L520,22 L720,58 L910,18 L1130,56 L1320,30 L1440,52 V110 Z"
-          fill="var(--sage)"
-          fillOpacity="0.85"
-        />
-        <path
-          d="M0,66 L150,30 L330,64 L520,22 L720,58 L910,18 L1130,56 L1320,30 L1440,52"
-          fill="none"
-          stroke="var(--gold)"
-          strokeWidth="2"
-          strokeOpacity="0.4"
-        />
-      </svg>
+      {/* ── Costura: cerros suaves de Tafí (transición desde Quiénes Somos) ── */}
+      <SepCerros className="relative block w-full -mt-6 lg:-mt-10 mb-8 lg:mb-12" />
+
+      {/* Alternativa minimalista — descomentar (y su import) para usarla en vez de los cerros:
+      <SepHairline className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-8 pb-2" />
+      */}
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pb-14 lg:pb-20 pt-4 lg:pt-6">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -41,101 +34,111 @@ export function Contacto() {
             >
               Hablemos
             </p>
-            <h2 className="reveal font-serif text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.0] tracking-[-0.02em] font-medium text-white">
+            <InkBleed
+              as="h2"
+              className="font-serif text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.0] tracking-[-0.02em] font-medium text-white"
+            >
               Planifiquemos tu
               <br />
               <span className="italic font-normal" style={{ color: "var(--gold-bright)" }}>
                 próxima aventura
               </span>
-            </h2>
-            <p className="reveal mt-5 text-white/75 text-[16px] leading-relaxed max-w-md">
+            </InkBleed>
+            <StaggerReveal y={12}>
+            <p className="mt-5 text-white/75 text-[16px] leading-relaxed max-w-md">
               Escribinos por WhatsApp o dejanos tu consulta. Sergio y Naty te
               responden en persona, como buenos vecinos del valle.
             </p>
 
-            {/* WhatsApp — canal héroe */}
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="reveal group flex items-center gap-4 rounded-2xl px-6 py-5 press-btn mt-8"
-              style={{ background: "var(--gold-bright)", color: "var(--deepgreen)" }}
-            >
-              <span
-                className="grid place-items-center h-12 w-12 rounded-full text-2xl shrink-0"
-                style={{ background: "var(--deepgreen)", color: "var(--gold-bright)" }}
-              >
-                <i className="ti ti-brand-whatsapp" />
-              </span>
-              <span className="flex-1">
-                <span className="block eyebrow text-[10px] opacity-70">
-                  WhatsApp · respondemos en persona
-                </span>
-                <span className="block text-[19px] font-semibold mt-0.5">
-                  +54 9 381 203-2123
-                </span>
-              </span>
-              <i className="ti ti-arrow-right text-xl transition-transform group-hover:translate-x-1" />
-            </a>
-
-            {/* Instagram + Ubicación */}
-            <div className="reveal mt-3 space-y-3">
+            {/* WhatsApp + canales secundarios como un bloque único */}
+            <div className="mt-8">
               <a
-                href={INSTAGRAM}
+                href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl px-5 py-4"
-                style={{
-                  background: "rgba(250,245,236,0.06)",
-                  border: "1px solid rgba(250,245,236,0.14)",
-                }}
+                className="group flex items-center gap-4 rounded-2xl px-6 py-5 press-btn"
+                style={{ background: "var(--gold-bright)", color: "var(--deepgreen)" }}
               >
                 <span
-                  className="grid place-items-center h-11 w-11 rounded-full text-xl shrink-0"
-                  style={{ background: "var(--sand)", color: "var(--terra)" }}
+                  className="grid place-items-center h-12 w-12 rounded-full text-2xl shrink-0"
+                  style={{ background: "var(--deepgreen)", color: "var(--gold-bright)" }}
                 >
-                  <i className="ti ti-brand-instagram" />
+                  <i className="ti ti-brand-whatsapp" />
                 </span>
                 <span className="flex-1">
-                  <span className="block eyebrow text-[10px] text-white/55">
-                    Instagram
+                  <span className="block eyebrow text-[10px] opacity-70">
+                    WhatsApp · respondemos en persona
                   </span>
-                  <span className="block text-white text-[15px] font-medium">
-                    @poma.tafidelvalle
+                  <span className="block text-[19px] font-semibold mt-0.5">
+                    +54 9 381 203-2123
                   </span>
                 </span>
-                <span className="text-white/40 text-lg">
-                  <i className="ti ti-arrow-right" />
-                </span>
+                <i className="ti ti-arrow-right text-xl transition-transform group-hover:translate-x-1" />
               </a>
-              <div
-                className="flex items-center gap-4 rounded-xl px-5 py-4"
-                style={{
-                  background: "rgba(250,245,236,0.06)",
-                  border: "1px solid rgba(250,245,236,0.14)",
-                }}
-              >
-                <span
-                  className="grid place-items-center h-11 w-11 rounded-full text-xl shrink-0"
-                  style={{ background: "var(--sand)", color: "var(--green)" }}
+
+              {/* Instagram + Ubicación */}
+              <div className="mt-3 space-y-3">
+                <a
+                  href={INSTAGRAM}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-xl px-5 py-4"
+                  style={{
+                    background: "rgba(250,245,236,0.06)",
+                    border: "1px solid rgba(250,245,236,0.14)",
+                  }}
                 >
-                  <i className="ti ti-map-pin" />
-                </span>
-                <span className="flex-1">
-                  <span className="block eyebrow text-[10px] text-white/55">
-                    Ubicación
+                  <span
+                    className="grid place-items-center h-11 w-11 rounded-full text-xl shrink-0"
+                    style={{ background: "var(--sand)", color: "var(--terra)" }}
+                  >
+                    <i className="ti ti-brand-instagram" />
                   </span>
-                  <span className="block text-white text-[15px] font-medium">
-                    Tafí del Valle, Tucumán, Argentina
+                  <span className="flex-1">
+                    <span className="block eyebrow text-[10px] text-white/55">
+                      Instagram
+                    </span>
+                    <span className="block text-white text-[15px] font-medium">
+                      @poma.tafidelvalle
+                    </span>
                   </span>
-                </span>
+                  <span className="text-white/40 text-lg">
+                    <i className="ti ti-arrow-right" />
+                  </span>
+                </a>
+                <div
+                  className="flex items-center gap-4 rounded-xl px-5 py-4"
+                  style={{
+                    background: "rgba(250,245,236,0.06)",
+                    border: "1px solid rgba(250,245,236,0.14)",
+                  }}
+                >
+                  <span
+                    className="grid place-items-center h-11 w-11 rounded-full text-xl shrink-0"
+                    style={{ background: "var(--sand)", color: "var(--green)" }}
+                  >
+                    <i className="ti ti-map-pin" />
+                  </span>
+                  <span className="flex-1">
+                    <span className="block eyebrow text-[10px] text-white/55">
+                      Ubicación
+                    </span>
+                    <span className="block text-white text-[15px] font-medium">
+                      Tafí del Valle, Tucumán, Argentina
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
+            </StaggerReveal>
           </div>
 
           {/* ── Postal: formulario ── */}
-          <div
-            className="reveal relative rounded-[20px] p-7 sm:p-9"
+          <Reveal
+            as="div"
+            y={32}
+            scale={0.97}
+            className="relative rounded-[20px] p-7 sm:p-9"
             style={{
               background: "var(--cream)",
               border: "1px solid var(--gold)",
@@ -232,7 +235,7 @@ export function Contacto() {
                 Enviar consulta <i className="ti ti-arrow-right text-base" />
               </button>
             </form>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

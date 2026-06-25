@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
+import { InkBleed } from "@/components/ink-bleed";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -81,14 +82,15 @@ export function Servicios() {
           >
             Lo que hacemos
           </p>
-          <h2
-            className="reveal font-serif text-4xl md:text-5xl lg:text-6xl leading-[0.98] tracking-[-0.02em] font-medium"
+          <InkBleed
+            as="h2"
+            className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[0.98] tracking-[-0.02em] font-medium"
             style={{ color: "var(--deepgreen)" }}
           >
             Dos formas de
             <br />
             descubrir el valle
-          </h2>
+          </InkBleed>
         </div>
         <p
           className="reveal max-w-sm text-[16px] leading-relaxed"

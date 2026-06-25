@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { InkBleed } from "@/components/ink-bleed";
+import { StaggerReveal } from "@/components/stagger-reveal";
+import { ImageReveal } from "@/components/image-reveal";
+import { SignatureDivider } from "@/components/signature-divider";
 
 const personas = [
   {
@@ -36,7 +40,10 @@ export function QuienesSomos() {
             >
               Quiénes somos
             </p>
-            <h2 className="reveal font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.0] tracking-[-0.02em] font-medium text-white">
+            <InkBleed
+              as="h2"
+              className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.0] tracking-[-0.02em] font-medium text-white"
+            >
               Una familia,
               <br />
               <span className="italic font-normal" style={{ color: "var(--gold-bright)" }}>
@@ -44,9 +51,9 @@ export function QuienesSomos() {
               </span>
               ,<br />
               un mismo valle
-            </h2>
+            </InkBleed>
           </div>
-          <div className="reveal space-y-4">
+          <StaggerReveal className="space-y-4">
             <p className="text-[16px] leading-relaxed" style={{ color: "rgba(245,241,236,0.82)" }}>
               PÓMA nació el 15 de octubre de 2025, de la mano de{" "}
               <span className="text-white font-semibold">Sergio y Naty</span>, ambos
@@ -57,23 +64,19 @@ export function QuienesSomos() {
               Creemos en un turismo honesto, cercano y respetuoso con la naturaleza, la
               historia y la gente de los Valles Calchaquíes.
             </p>
-          </div>
+          </StaggerReveal>
         </div>
 
         {/* ── Divisor firma: hairline dorada con el lugar real ── */}
-        <div className="reveal flex items-center gap-5 my-12 lg:my-16">
-          <span className="h-px flex-1" style={{ background: "rgba(224,176,85,0.35)" }} />
-          <span className="eyebrow text-[11px] whitespace-nowrap" style={{ color: "var(--gold-bright)" }}>
-            Tafí del Valle · Valles Calchaquíes
-          </span>
-          <span className="h-px flex-1" style={{ background: "rgba(224,176,85,0.35)" }} />
-        </div>
+        <SignatureDivider className="flex items-center gap-5 my-12 lg:my-16">
+          Tafí del Valle · Valles Calchaquíes
+        </SignatureDivider>
 
         {/* ── Cuerpo: foto enmarcada + las dos pasiones como filas ── */}
         <div className="grid lg:grid-cols-[5fr_7fr] gap-8 lg:gap-12 items-stretch">
           {/* Retrato con epígrafe */}
-          <figure
-            className="reveal relative rounded-2xl overflow-hidden min-h-[340px] lg:min-h-full"
+          <ImageReveal
+            className="relative rounded-2xl overflow-hidden min-h-[340px] lg:min-h-full"
             style={{ border: "1px solid rgba(224,176,85,0.4)" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -97,10 +100,10 @@ export function QuienesSomos() {
                 Sergio &amp; Naty
               </span>
             </figcaption>
-          </figure>
+          </ImageReveal>
 
           {/* Las dos pasiones, una bajo la otra, conectadas */}
-          <div className="reveal flex flex-col">
+          <StaggerReveal className="flex flex-col">
             {personas.map((p, i) => (
               <Link
                 key={p.name}
@@ -138,7 +141,7 @@ export function QuienesSomos() {
                 </div>
               </Link>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </div>
     </section>

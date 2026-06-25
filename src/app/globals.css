@@ -99,19 +99,14 @@ body {
   width: 100%;
 }
 
-/* Service card accent underline grows on hover */
-.svc-card .svc-underline {
-  width: 2.5rem;
-  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.svc-card:hover .svc-underline {
-  width: 5.5rem;
-}
+/* Service row editorial hover: left gold border + warm bg */
 .svc-card {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-left: 3px solid transparent;
+  transition: border-color 0.35s ease, background 0.35s ease;
 }
 .svc-card:hover {
-  transform: translateY(-8px);
+  border-left-color: var(--gold);
+  background: var(--sand-soft);
 }
 
 /* Gallery zoom on hover */
