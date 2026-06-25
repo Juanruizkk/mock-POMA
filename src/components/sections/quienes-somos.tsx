@@ -1,27 +1,32 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { InkBleed } from "@/components/ink-bleed";
 import { StaggerReveal } from "@/components/stagger-reveal";
 import { ImageReveal } from "@/components/image-reveal";
 import { SignatureDivider } from "@/components/signature-divider";
 
-const personas = [
-  {
-    icon: "ti-car",
-    name: "Sergio",
-    role: "Excursiones en vehículo",
-    desc: "Lidera los recorridos y conoce cada camino de los Valles Calchaquíes.",
-    cta: "Ver excursiones",
-  },
-  {
-    icon: "ti-mountain",
-    name: "Naty",
-    role: "Trekking & caminatas",
-    desc: "Guía de montaña, enamorada de los senderos y cumbres del valle.",
-    cta: "Ver caminatas",
-  },
-];
-
 export function QuienesSomos() {
+  const t = useTranslations("quienes");
+
+  const personas = [
+    {
+      icon: "ti-car",
+      name: "Sergio",
+      role: t("sergio.role"),
+      desc: t("sergio.desc"),
+      cta: t("sergio.cta"),
+    },
+    {
+      icon: "ti-mountain",
+      name: "Naty",
+      role: t("naty.role"),
+      desc: t("naty.desc"),
+      cta: t("naty.cta"),
+    },
+  ];
+
   return (
     <section
       id="quienes"
@@ -31,50 +36,44 @@ export function QuienesSomos() {
       <div className="absolute inset-0 noise opacity-[0.07]" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-        {/* ── Encabezado editorial: titular + intro a dos columnas ── */}
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-x-14 gap-y-8 items-end">
           <div>
             <p
               className="reveal eyebrow text-[12px] mb-5"
               style={{ color: "var(--gold-bright)" }}
             >
-              Quiénes somos
+              {t("eyebrow")}
             </p>
             <InkBleed
               as="h2"
               className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.0] tracking-[-0.02em] font-medium text-white"
             >
-              Una familia,
+              {t("h2a")}
               <br />
               <span className="italic font-normal" style={{ color: "var(--gold-bright)" }}>
-                dos pasiones
+                {t("h2accent")}
               </span>
               ,<br />
-              un mismo valle
+              {t("h2b")}
             </InkBleed>
           </div>
           <StaggerReveal className="space-y-4">
             <p className="text-[16px] leading-relaxed" style={{ color: "rgba(245,241,236,0.82)" }}>
-              PÓMA nació el 15 de octubre de 2025, de la mano de{" "}
-              <span className="text-white font-semibold">Sergio y Naty</span>, ambos
-              Técnicos en Turismo enamorados de su tierra. No somos una agencia: somos
-              vecinos que decidimos compartir lo que más amamos.
+              {t.rich("p1", {
+                b: (chunks) => <span className="text-white font-semibold">{chunks}</span>,
+              })}
             </p>
             <p className="text-[16px] leading-relaxed" style={{ color: "rgba(245,241,236,0.82)" }}>
-              Creemos en un turismo honesto, cercano y respetuoso con la naturaleza, la
-              historia y la gente de los Valles Calchaquíes.
+              {t("p2")}
             </p>
           </StaggerReveal>
         </div>
 
-        {/* ── Divisor firma: hairline dorada con el lugar real ── */}
         <SignatureDivider className="flex items-center gap-5 my-12 lg:my-16">
-          Tafí del Valle · Valles Calchaquíes
+          {t("divider")}
         </SignatureDivider>
 
-        {/* ── Cuerpo: foto enmarcada + las dos pasiones como filas ── */}
         <div className="grid lg:grid-cols-[5fr_7fr] gap-8 lg:gap-12 items-stretch">
-          {/* Retrato con epígrafe */}
           <ImageReveal
             className="relative rounded-2xl overflow-hidden min-h-[340px] lg:min-h-full"
             style={{ border: "1px solid rgba(224,176,85,0.4)" }}
@@ -94,7 +93,7 @@ export function QuienesSomos() {
             />
             <figcaption className="absolute bottom-0 left-0 p-5 lg:p-6">
               <span className="block eyebrow text-[10px]" style={{ color: "var(--gold-bright)" }}>
-                Fundadores
+                {t("caption")}
               </span>
               <span className="block font-serif text-2xl text-white font-medium mt-1">
                 Sergio &amp; Naty
@@ -102,7 +101,6 @@ export function QuienesSomos() {
             </figcaption>
           </ImageReveal>
 
-          {/* Las dos pasiones, una bajo la otra, conectadas */}
           <StaggerReveal className="flex flex-col">
             {personas.map((p, i) => (
               <Link

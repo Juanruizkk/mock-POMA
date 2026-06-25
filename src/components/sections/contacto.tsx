@@ -1,15 +1,18 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { InkBleed } from "@/components/ink-bleed";
 import { StaggerReveal } from "@/components/stagger-reveal";
 import { Reveal } from "@/components/reveal";
 import { SepCerros } from "@/components/separators";
 import { ContactForm } from "@/components/contact-form";
-// Alternativa minimalista (descomentar este import y su uso más abajo):
-// import { SepHairline } from "@/components/separators";
 
 const WHATSAPP = "https://wa.me/5493812032123";
 const INSTAGRAM = "https://instagram.com/poma.tafidelvalle";
 
 export function Contacto() {
+  const t = useTranslations("contacto");
+
   return (
     <section
       id="contacto"
@@ -33,22 +36,21 @@ export function Contacto() {
               className="reveal eyebrow text-[12px] mb-4"
               style={{ color: "var(--gold-bright)" }}
             >
-              Hablemos
+              {t("eyebrow")}
             </p>
             <InkBleed
               as="h2"
               className="font-serif text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.0] tracking-[-0.02em] font-medium text-white"
             >
-              Planifiquemos tu
+              {t("h2a")}
               <br />
               <span className="italic font-normal" style={{ color: "var(--gold-bright)" }}>
-                próxima aventura
+                {t("h2accent")}
               </span>
             </InkBleed>
             <StaggerReveal y={12} className="flex-1 flex flex-col">
             <p className="mt-5 text-white/75 text-[16px] leading-relaxed max-w-md">
-              Escribinos por WhatsApp o dejanos tu consulta. Sergio y Naty te
-              responden en persona, como buenos vecinos del valle.
+              {t("desc")}
             </p>
 
             {/* WhatsApp + canales secundarios como un bloque único */}
@@ -68,10 +70,10 @@ export function Contacto() {
                 </span>
                 <span className="flex-1">
                   <span className="block eyebrow text-[10px] opacity-70">
-                    WhatsApp · respondemos en persona
+                    {t("waLabel")}
                   </span>
                   <span className="block text-[19px] font-semibold mt-0.5">
-                    +54 9 381 203-2123
+                    {t("waPhone")}
                   </span>
                 </span>
                 <i className="ti ti-arrow-right text-xl transition-transform group-hover:translate-x-1" />
@@ -97,10 +99,10 @@ export function Contacto() {
                   </span>
                   <span className="flex-1">
                     <span className="block eyebrow text-[10px] text-white/55">
-                      Instagram
+                      {t("igLabel")}
                     </span>
                     <span className="block text-white text-[15px] font-medium">
-                      @poma.tafidelvalle
+                      {t("igHandle")}
                     </span>
                   </span>
                   <span className="text-white/40 text-lg">
@@ -145,14 +147,14 @@ export function Contacto() {
                 >
                   <div>
                     <span className="block eyebrow text-[9px]" style={{ color: "rgba(192,138,45,0.8)" }}>
-                      26°51′S · 65°42′O
+                      {t("mapCoords")}
                     </span>
                     <span className="block font-serif text-[13px] font-medium leading-tight" style={{ color: "var(--cream)" }}>
-                      Tafí del Valle
+                      {t("mapPlace")}
                     </span>
                   </div>
                   <span className="eyebrow text-[8px]" style={{ color: "rgba(250,245,236,0.4)" }}>
-                    Tucumán · ARG
+                    {t("mapRegion")}
                   </span>
                 </div>
               </div>
@@ -199,13 +201,13 @@ export function Contacto() {
               className="eyebrow text-[12px] mb-2"
               style={{ color: "var(--terra)" }}
             >
-              Dejanos tu mensaje
+              {t("formEyebrow")}
             </p>
             <h3
               className="font-serif text-3xl font-medium mb-7"
               style={{ color: "var(--deepgreen)" }}
             >
-              Enviá una consulta
+              {t("formTitle")}
             </h3>
 
             <ContactForm />

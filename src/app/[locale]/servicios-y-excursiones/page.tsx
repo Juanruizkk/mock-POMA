@@ -1,38 +1,53 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { ExcursionCards } from "@/components/excursion-cards";
 import { StaggerReveal } from "@/components/stagger-reveal";
 import { InkBleed } from "@/components/ink-bleed";
 import { Reveal } from "@/components/reveal";
 import { Contacto } from "@/components/sections/contacto";
 
-export const metadata: Metadata = {
-  title: "Servicios y Excursiones",
-  description:
-    "Servicio de interprete, salidas en vehiculo y excursiones a pie por Tafi del Valle y los Valles Calchaquies.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "serviciosPage.meta" });
+  return {
+    title: t("title"),
+    description: t("desc"),
+  };
+}
 
-const servicios = [
-  {
-    icon: "record_voice_over",
-    eyebrow: "Idiomas",
-    title: "Servicio de Intérprete",
-    desc: "Acompañamiento bilingüe (español / inglés) para que cada relato histórico y cultural del valle llegue con total claridad.",
-  },
-  {
-    icon: "airport_shuttle",
-    eyebrow: "Movilidad",
-    title: "Salidas en Vehículo",
-    desc: "Movilidad segura y confortable para grupos y pasajeros individuales, con unidades equipadas y conductores que conocen cada camino.",
-  },
-  {
-    icon: "star_rate",
-    eyebrow: "Personalización",
-    title: "Experiencias a Medida",
-    desc: "Diseñamos itinerarios según tus intereses: desde catas privadas en bodegas de altura hasta picnics en valles vírgenes.",
-  },
-];
+export default async function ServiciosYExcursionesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "serviciosPage" });
 
-export default function ServiciosYExcursionesPage() {
+  const servicios = [
+    {
+      icon: "record_voice_over",
+      eyebrow: t("svcs.interprete.eyebrow"),
+      title: t("svcs.interprete.title"),
+      desc: t("svcs.interprete.desc"),
+    },
+    {
+      icon: "airport_shuttle",
+      eyebrow: t("svcs.vehiculo.eyebrow"),
+      title: t("svcs.vehiculo.title"),
+      desc: t("svcs.vehiculo.desc"),
+    },
+    {
+      icon: "star_rate",
+      eyebrow: t("svcs.medida.eyebrow"),
+      title: t("svcs.medida.title"),
+      desc: t("svcs.medida.desc"),
+    },
+  ];
+
   return (
     <>
       {/* Hero */}
@@ -40,7 +55,6 @@ export default function ServiciosYExcursionesPage() {
         className="relative overflow-hidden"
         style={{ minHeight: "100vh" }}
       >
-        {/* Imagen */}
         <div
           className="absolute inset-0 z-0 overflow-hidden"
           style={{ background: "var(--deepgreen)" }}
@@ -53,7 +67,6 @@ export default function ServiciosYExcursionesPage() {
           />
         </div>
 
-        {/* Gradiente vertical */}
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -61,8 +74,6 @@ export default function ServiciosYExcursionesPage() {
               "linear-gradient(180deg, rgba(22,51,40,0.45) 0%, rgba(22,51,40,0.22) 45%, rgba(22,51,40,0.92) 100%)",
           }}
         />
-
-        {/* Gradiente horizontal */}
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -70,11 +81,8 @@ export default function ServiciosYExcursionesPage() {
               "linear-gradient(90deg, rgba(15,28,22,0.45) 0%, rgba(15,28,22,0) 62%)",
           }}
         />
-
-        {/* Noise */}
         <div className="absolute inset-0 z-10 noise opacity-[0.12] mix-blend-overlay" />
 
-        {/* Contenido */}
         <div
           className="relative z-20 max-w-7xl mx-auto px-6 lg:px-10 flex flex-col justify-center"
           style={{ minHeight: "100vh" }}
@@ -84,19 +92,19 @@ export default function ServiciosYExcursionesPage() {
               className="reveal eyebrow text-[12px] mb-6"
               style={{ color: "#e6c68a" }}
             >
-              Tafí del Valle · Tucumán, Argentina
+              {t("hero.eyebrow")}
             </p>
 
             <InkBleed
               as="h1"
               className="font-serif text-white leading-[0.95] tracking-[-0.02em] text-6xl md:text-7xl lg:text-[5.5rem] font-medium"
             >
-              Servicios{" "}
+              {t("hero.h1a")}{" "}
               <span className="italic font-normal" style={{ color: "#e7b24a" }}>
-                y excursiones
+                {t("hero.h1accent")}
               </span>
               <br />
-              en Tafí del Valle
+              {t("hero.h1b")}
             </InkBleed>
 
             <StaggerReveal>
@@ -104,8 +112,7 @@ export default function ServiciosYExcursionesPage() {
                 className="text-lg md:text-xl mt-7 max-w-xl leading-relaxed"
                 style={{ color: "rgba(245,241,236,0.92)" }}
               >
-                Intérprete bilingüe, salidas en vehículo y trekking guiado —
-                todo el valle, en un solo lugar.
+                {t("hero.desc")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-10">
                 <a
@@ -113,7 +120,7 @@ export default function ServiciosYExcursionesPage() {
                   className="press-btn inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[13px] eyebrow text-white"
                   style={{ background: "var(--green)" }}
                 >
-                  Ver excursiones <i className="ti ti-arrow-right text-base" />
+                  {t("hero.ctaPrimary")} <i className="ti ti-arrow-right text-base" />
                 </a>
                 <a
                   href="https://wa.me/5493812032123"
@@ -127,18 +134,17 @@ export default function ServiciosYExcursionesPage() {
                     backdropFilter: "blur(4px)",
                   }}
                 >
-                  Hablá con nosotros
+                  {t("hero.ctaSecondary")}
                 </a>
               </div>
             </StaggerReveal>
           </div>
         </div>
 
-        {/* Footer line */}
         <div className="absolute z-20 bottom-8 left-6 lg:left-10 flex items-center gap-3">
           <span className="h-px w-10" style={{ background: "var(--gold)" }} />
           <span className="eyebrow text-[11px] text-white/80">
-            Servicios · Poma · Tafí del Valle
+            {t("hero.badge")}
           </span>
         </div>
       </section>
@@ -152,29 +158,23 @@ export default function ServiciosYExcursionesPage() {
         <div className="absolute inset-0 noise opacity-[0.04]" />
 
         <div className="relative max-w-[1280px] mx-auto px-5 md:px-16">
-          {/* Header */}
           <div className="mb-8 md:mb-10 max-w-xl">
             <span
               className="inline-flex items-center gap-2 eyebrow text-[10px] mb-5"
               style={{ color: "var(--terra)" }}
             >
               <span className="material-symbols-outlined text-[14px]">concierge</span>
-              Nuestros Servicios
+              {t("svcs.eyebrow")}
             </span>
             <InkBleed
               as="h2"
               className="font-[var(--font-headline)] text-[32px] md:text-[40px] leading-[1.1] font-bold mb-4"
               style={{ color: "var(--deepgreen)" }}
             >
-              Cómo te acompañamos
+              {t("svcs.h2")}
             </InkBleed>
-            <p style={{ color: "var(--muted)" }} className="text-[15px] leading-relaxed">
-              Antes, durante y después de cada salida: lo esencial para que tu
-              visita al valle sea simple y memorable.
-            </p>
           </div>
 
-          {/* Filas editoriales */}
           <div
             className="h-px w-full"
             style={{ background: "rgba(192,138,45,0.18)" }}
@@ -184,7 +184,6 @@ export default function ServiciosYExcursionesPage() {
             {servicios.map((s, i) => (
               <div key={s.title}>
                 <div className="svc-card group flex items-center gap-6 md:gap-10 py-5 md:py-6 px-2 transition-all duration-300 cursor-default">
-                  {/* Ordinal decorativo */}
                   <span
                     className="font-[var(--font-headline)] text-[56px] md:text-[72px] leading-none shrink-0 w-16 md:w-20 select-none"
                     style={{ color: "rgba(192,138,45,0.22)" }}
@@ -192,8 +191,6 @@ export default function ServiciosYExcursionesPage() {
                   >
                     0{i + 1}
                   </span>
-
-                  {/* Texto */}
                   <div className="flex-1 min-w-0">
                     <p
                       className="eyebrow text-[10px] mb-2"
@@ -214,10 +211,8 @@ export default function ServiciosYExcursionesPage() {
                       {s.desc}
                     </p>
                   </div>
-
-                  {/* Ícono */}
                   <div
-                    className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+                    className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center"
                     style={{
                       border: "1px solid rgba(192,138,45,0.35)",
                       color: "var(--gold)",
@@ -226,8 +221,6 @@ export default function ServiciosYExcursionesPage() {
                     <span className="material-symbols-outlined text-xl">{s.icon}</span>
                   </div>
                 </div>
-
-                {/* Hairline */}
                 <div
                   className="h-px w-full"
                   style={{ background: "rgba(192,138,45,0.18)" }}
@@ -246,17 +239,14 @@ export default function ServiciosYExcursionesPage() {
       >
         <div className="absolute inset-0 noise opacity-[0.05]" />
 
-        {/* Header editorial */}
         <div className="relative max-w-[1280px] mx-auto px-5 md:px-16 pt-10 md:pt-14 pb-6 md:pb-8">
-
-          {/* Fila superior: eyebrow ↔ contador */}
           <div className="flex items-center justify-between mb-4">
             <Reveal y={10}>
               <p
                 className="eyebrow text-[10px]"
                 style={{ color: "var(--terra)" }}
               >
-                Todas las Excursiones
+                {t("aventura.eyebrow")}
               </p>
             </Reveal>
             <Reveal y={10}>
@@ -272,16 +262,14 @@ export default function ServiciosYExcursionesPage() {
                   className="eyebrow text-[9px]"
                   style={{ color: "var(--terra)", opacity: 0.6 }}
                 >
-                  destinos
+                  {t("aventura.destinos")}
                 </span>
               </div>
             </Reveal>
           </div>
 
-          {/* Hairline */}
           <div className="h-px w-full mb-5" style={{ background: "rgba(192,138,45,0.2)" }} />
 
-          {/* Headline */}
           <InkBleed
             as="h2"
             className="font-[var(--font-headline)] font-extrabold leading-[0.92] tracking-tight mb-5"
@@ -290,25 +278,21 @@ export default function ServiciosYExcursionesPage() {
               color: "var(--deepgreen)",
             }}
           >
-            Elegí tu<br />
+            {t("aventura.h2a")}<br />
             <span
               className="italic font-medium"
               style={{ color: "var(--terra)", WebkitTextStroke: "0px" }}
             >
-              Aventura
+              {t("aventura.h2accent")}
             </span>
           </InkBleed>
 
-          {/* Descripción + ornamento */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <Reveal y={12} className="max-w-md">
               <p className="text-[15px] leading-relaxed" style={{ color: "var(--muted)" }}>
-                Desde caminatas familiares hasta expediciones de jornada completa —
-                cada salida está guiada por expertos locales.
+                {t("aventura.h2b")}
               </p>
             </Reveal>
-
-            {/* Ornamento: icono explorar */}
             <Reveal y={12} className="shrink-0 hidden sm:flex items-center gap-3 pb-1">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center"
@@ -322,29 +306,23 @@ export default function ServiciosYExcursionesPage() {
             </Reveal>
           </div>
 
-          {/* Hairline antes de las cards */}
           <div className="h-px w-full mt-7" style={{ background: "rgba(192,138,45,0.2)" }} />
         </div>
 
-        {/* Cards */}
         <div className="relative max-w-[1280px] mx-auto px-5 md:px-16 pb-16 md:pb-24">
           <ExcursionCards />
         </div>
       </section>
 
-      {/* Politicas de Reserva */}
+      {/* Políticas de Reserva */}
       <section
         className="relative overflow-hidden py-16 md:py-24"
         style={{ background: "var(--deepgreen)" }}
       >
-        {/* Textura */}
         <div className="absolute inset-0 noise opacity-[0.07]" />
-
-        {/* Hairlines */}
         <div className="absolute top-0 inset-x-0 h-px" style={{ background: "rgba(224,176,85,0.25)" }} />
         <div className="absolute bottom-0 inset-x-0 h-px" style={{ background: "rgba(224,176,85,0.25)" }} />
 
-        {/* Watermark "50%" de fondo */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 font-[var(--font-headline)] font-black leading-none select-none"
@@ -354,13 +332,12 @@ export default function ServiciosYExcursionesPage() {
             letterSpacing: "-0.04em",
           }}
         >
-          50%
+          {t("politicas.stamp")}
         </span>
 
         <div className="relative max-w-[1280px] mx-auto px-5 md:px-16">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-            {/* Sello circular */}
             <Reveal y={24} scale={0.94} className="shrink-0">
               <div
                 className="w-44 h-44 md:w-52 md:h-52 rounded-full flex flex-col items-center justify-center gap-1"
@@ -374,71 +351,65 @@ export default function ServiciosYExcursionesPage() {
                   className="font-[var(--font-headline)] font-black leading-none"
                   style={{ fontSize: "clamp(40px, 8vw, 56px)", color: "var(--gold-bright)" }}
                 >
-                  50%
+                  {t("politicas.stamp")}
                 </span>
                 <span
                   className="eyebrow text-[8px] text-center px-4 leading-snug"
                   style={{ color: "rgba(224,176,85,0.55)" }}
                 >
-                  seña al<br />reservar
+                  {t("politicas.stampLabel")}
                 </span>
               </div>
             </Reveal>
 
-            {/* Contenido */}
             <div className="flex-1 flex flex-col gap-5">
               <p
                 className="reveal eyebrow text-[10px]"
                 style={{ color: "var(--gold-bright)" }}
               >
-                Políticas de Reserva
+                {t("politicas.eyebrow")}
               </p>
 
               <InkBleed
                 as="h2"
                 className="font-serif text-[28px] md:text-[38px] font-medium text-white leading-tight"
               >
-                Tu aventura empieza{" "}
-                <em className="not-italic" style={{ color: "var(--gold-bright)" }}>con una seña</em>
+                {t("politicas.h2a")}{" "}
+                <em className="not-italic" style={{ color: "var(--gold-bright)" }}>{t("politicas.h2b")}</em>
               </InkBleed>
 
               <StaggerReveal y={16}>
-              <p className="text-[15px] leading-relaxed max-w-lg" style={{ color: "rgba(245,241,236,0.65)" }}>
-                Para garantizar la exclusividad y coordinación de nuestros guías,
-                todas las excursiones requieren una{" "}
-                <span className="text-white font-semibold">seña del 50%</span>{" "}
-                al momento de la reserva.
-              </p>
+                <p className="text-[15px] leading-relaxed max-w-lg mt-4" style={{ color: "rgba(245,241,236,0.65)" }}>
+                  {t("politicas.desc")}
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="https://wa.me/5493812032123"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="press-btn inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full eyebrow text-[12px] transition-opacity hover:opacity-90"
-                  style={{ background: "var(--gold-bright)", color: "var(--deepgreen)" }}
-                >
-                  <i className="ti ti-brand-whatsapp text-lg" />
-                  Reservar por WhatsApp
-                </a>
-                <a
-                  href="tel:+5493812032123"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full eyebrow text-[12px] transition-colors hover:bg-white/5"
-                  style={{
-                    border: "1px solid rgba(224,176,85,0.3)",
-                    color: "rgba(255,255,255,0.6)",
-                  }}
-                >
-                  <i className="ti ti-phone text-base" />
-                  Consultar tarifas
-                </a>
-              </div>
+                <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                  <a
+                    href="https://wa.me/5493812032123"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="press-btn inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full eyebrow text-[12px] transition-opacity hover:opacity-90"
+                    style={{ background: "var(--gold-bright)", color: "var(--deepgreen)" }}
+                  >
+                    <i className="ti ti-brand-whatsapp text-lg" />
+                    {t("politicas.ctaWhatsapp")}
+                  </a>
+                  <a
+                    href="tel:+5493812032123"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full eyebrow text-[12px] transition-colors hover:bg-white/5"
+                    style={{
+                      border: "1px solid rgba(224,176,85,0.3)",
+                      color: "rgba(255,255,255,0.6)",
+                    }}
+                  >
+                    <i className="ti ti-phone text-base" />
+                    {t("politicas.ctaPhone")}
+                  </a>
+                </div>
               </StaggerReveal>
             </div>
+          </div>
 
-          </div>{/* /flex row sello + contenido */}
-
-          {/* Pie de ticket */}
           <div
             className="mt-12 pt-5 flex items-center gap-4"
             style={{ borderTop: "1px solid rgba(224,176,85,0.12)" }}
@@ -448,7 +419,7 @@ export default function ServiciosYExcursionesPage() {
             </span>
             <div className="flex-1 h-px" style={{ background: "rgba(224,176,85,0.08)" }} />
             <span className="eyebrow text-[8px]" style={{ color: "rgba(224,176,85,0.35)" }}>
-              Política de Reserva 2025
+              {t("politicas.stampLabel")}
             </span>
           </div>
         </div>

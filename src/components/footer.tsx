@@ -1,18 +1,24 @@
-import Link from "next/link";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 
 const WHATSAPP = "https://wa.me/5493812032123";
 const INSTAGRAM = "https://instagram.com/poma.tafidelvalle";
 
-const navLinks = [
-  { href: "/#inicio", label: "Inicio" },
-  { href: "/#quienes", label: "Quiénes Somos" },
-  { href: "/servicios-y-excursiones", label: "Servicios y Excursiones" },
-  { href: "/#galeria", label: "Galería" },
-  { href: "/#contacto", label: "Contacto" },
-];
-
 export function Footer() {
+  const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
+
+  const navLinks = [
+    { href: "/#inicio", label: tNav("inicio") },
+    { href: "/#quienes", label: tNav("quienes") },
+    { href: "/servicios-y-excursiones", label: tNav("servicios") },
+    { href: "/#galeria", label: tNav("galeria") },
+    { href: "/#contacto", label: tNav("contacto") },
+  ];
+
   return (
     <footer
       className="relative overflow-hidden"
@@ -43,17 +49,17 @@ export function Footer() {
               </span>
             </div>
             <p className="font-serif text-2xl italic text-white/90 max-w-xs leading-snug">
-              La esencia de Tafí del Valle
+              {t("tagline")}
             </p>
           </div>
 
           <div>
-            <p className="eyebrow text-[11px] text-white/50 mb-5">Navegación</p>
+            <p className="eyebrow text-[11px] text-white/50 mb-5">{t("navTitle")}</p>
             <ul className="space-y-3 text-[15px]">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={link.href as "/"}
                     className="text-white/80 hover:text-white transition-colors"
                   >
                     {link.label}
@@ -64,7 +70,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="eyebrow text-[11px] text-white/50 mb-5">Seguinos</p>
+            <p className="eyebrow text-[11px] text-white/50 mb-5">{t("followTitle")}</p>
             <div className="flex gap-3">
               <a
                 href={WHATSAPP}
@@ -106,11 +112,10 @@ export function Footer() {
           style={{ borderTop: "1px solid rgba(250,245,236,0.12)" }}
         >
           <p className="text-[13px] text-white/55">
-            © {new Date().getFullYear()} PÓMA Tafí del Valle · Hecho con cariño en
-            los Valles Calchaquíes
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
           <p className="eyebrow text-[10px] text-white/40">
-            Técnicos en Turismo · Sergio &amp; Naty
+            {t("credits")}
           </p>
         </div>
       </div>

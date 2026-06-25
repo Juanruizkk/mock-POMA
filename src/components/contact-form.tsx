@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
 
-const ACTIVIDADES = [
+const ACTIVIDADES_ES = [
   "Cascadas de la Costa",
   "La Ciénaga",
   "Cerro El Pelado",
@@ -23,12 +24,37 @@ const ACTIVIDADES = [
   "Otro / Consulta general",
 ];
 
+const ACTIVIDADES_EN = [
+  "Coastal Waterfalls",
+  "La Ciénaga",
+  "Cerro El Pelado",
+  "Cafayate",
+  "Santa María – Capia Route",
+  "Quebrada de Los Sosa",
+  "Around the Lake",
+  "Quilmes",
+  "Loma La Cruz",
+  "Fuerte Viejo",
+  "Cueva Los Corrales",
+  "Historic City Center",
+  "Los Alisos Waterfall",
+  "El Rincón Waterfall",
+  "Interpreter Service",
+  "Vehicle Tours",
+  "Tailored Experiences",
+  "Other / General inquiry",
+];
+
 type Status = "idle" | "sending" | "success" | "error";
 
 const inputClass =
   "w-full bg-transparent border-b border-[#d8c9ad] px-1 py-2.5 text-[15px] text-[#2a2a26] placeholder:text-[#a99e88] outline-none transition-colors focus:border-[#c08a2d]";
 
 export function ContactForm() {
+  const t = useTranslations("form");
+  const locale = useLocale();
+  const actividades = locale === "en" ? ACTIVIDADES_EN : ACTIVIDADES_ES;
+
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
 
@@ -44,7 +70,7 @@ export function ContactForm() {
       phone: fd.get("phone"),
       activity: fd.get("activity"),
       message: fd.get("message"),
-      company: fd.get("company"), // honeypot
+      company: fd.get("company"),
     };
 
     try {
@@ -58,11 +84,11 @@ export function ContactForm() {
         setStatus("success");
         (e.target as HTMLFormElement).reset();
       } else {
-        setError(data.error ?? "Algo salió mal, intentá de nuevo.");
+        setError(data.error ?? t("errorGeneric"));
         setStatus("error");
       }
     } catch {
-      setError("No se pudo enviar. Revisá tu conexión.");
+      setError(t("errorConexion"));
       setStatus("error");
     }
   }
@@ -77,17 +103,17 @@ export function ContactForm() {
           <i className="ti ti-check text-white text-2xl" />
         </div>
         <h3 className="font-serif text-2xl font-medium" style={{ color: "var(--deepgreen)" }}>
-          ¡Consulta enviada!
+          {t("successTitle")}
         </h3>
         <p className="text-[14px] leading-relaxed max-w-xs" style={{ color: "var(--muted)" }}>
-          Sergio o Naty te responden a la brevedad. Mientras tanto, podés escribirnos por WhatsApp.
+          {t("successDesc")}
         </p>
         <button
           onClick={() => setStatus("idle")}
           className="eyebrow text-[11px] underline underline-offset-4 mt-2"
           style={{ color: "var(--terra)" }}
         >
-          Enviar otra consulta
+          {t("successReset")}
         </button>
       </div>
     );
@@ -95,54 +121,53 @@ export function ContactForm() {
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit} noValidate>
-      {/* Honeypot — invisible para humanos */}
       <input name="company" type="text" className="hidden" tabIndex={-1} autoComplete="off" />
 
       <div>
         <label className="block eyebrow text-[11px] mb-2" style={{ color: "var(--muted)" }} htmlFor="fullName">
-          Nombre *
+          {t("nombre")} *
         </label>
         <input
           id="fullName"
           name="fullName"
           type="text"
           required
-          placeholder="¿Cómo te llamás?"
+          placeholder={t("nombrePlaceholder")}
           className={inputClass}
         />
       </div>
 
       <div>
         <label className="block eyebrow text-[11px] mb-2" style={{ color: "var(--muted)" }} htmlFor="email">
-          Email *
+          {t("email")} *
         </label>
         <input
           id="email"
           name="email"
           type="email"
           required
-          placeholder="tu@email.com"
+          placeholder={t("emailPlaceholder")}
           className={inputClass}
         />
       </div>
 
       <div>
         <label className="block eyebrow text-[11px] mb-2" style={{ color: "var(--muted)" }} htmlFor="phone">
-          Teléfono *
+          {t("telefono")} *
         </label>
         <input
           id="phone"
           name="phone"
           type="tel"
           required
-          placeholder="+54 9 381 000-0000"
+          placeholder={t("telefonoPlaceholder")}
           className={inputClass}
         />
       </div>
 
       <div>
         <label className="block eyebrow text-[11px] mb-2" style={{ color: "var(--muted)" }} htmlFor="activity">
-          Excursión / Actividad *
+          {t("actividad")} *
         </label>
         <select
           id="activity"
@@ -152,34 +177,28 @@ export function ContactForm() {
           className={inputClass + " cursor-pointer"}
           style={{ appearance: "none" }}
         >
-          <option value="" disabled>
-            Seleccioná una actividad…
-          </option>
-          {ACTIVIDADES.map((a) => (
-            <option key={a} value={a}>
-              {a}
-            </option>
+          <option value="" disabled>{t("actividadPlaceholder")}</option>
+          {actividades.map((a) => (
+            <option key={a} value={a}>{a}</option>
           ))}
         </select>
       </div>
 
       <div>
         <label className="block eyebrow text-[11px] mb-2" style={{ color: "var(--muted)" }} htmlFor="message">
-          Mensaje
+          {t("mensaje")}
         </label>
         <textarea
           id="message"
           name="message"
           rows={3}
-          placeholder="Contanos qué te gustaría descubrir..."
+          placeholder={t("mensajePlaceholder")}
           className={inputClass + " resize-none"}
         />
       </div>
 
       {status === "error" && (
-        <p className="text-[13px]" style={{ color: "var(--terra)" }}>
-          {error}
-        </p>
+        <p className="text-[13px]" style={{ color: "var(--terra)" }}>{error}</p>
       )}
 
       <button
@@ -191,11 +210,11 @@ export function ContactForm() {
         {status === "sending" ? (
           <>
             <i className="ti ti-loader-2 animate-spin text-base" />
-            Enviando…
+            {t("enviando")}
           </>
         ) : (
           <>
-            Enviar consulta <i className="ti ti-arrow-right text-base" />
+            {t("enviar")} <i className="ti ti-arrow-right text-base" />
           </>
         )}
       </button>

@@ -1,25 +1,28 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-
-const links = [
-  { href: "/#inicio", label: "Inicio" },
-  { href: "/#quienes", label: "Quiénes Somos" },
-  { href: "/servicios-y-excursiones", label: "Servicios y Excursiones" },
-  { href: "/#galeria", label: "Galería" },
-  { href: "/#contacto", label: "Contacto" },
-];
 
 const WHATSAPP = "https://wa.me/5493812032123";
 const BLUR = "blur(24px) saturate(160%)";
 
 export function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const links = [
+    { href: "/#inicio", label: t("inicio") },
+    { href: "/#quienes", label: t("quienes") },
+    { href: "/servicios-y-excursiones", label: t("servicios") },
+    { href: "/#galeria", label: t("galeria") },
+    { href: "/#contacto", label: t("contacto") },
+  ];
 
   useEffect(() => {
     setMenuOpen(false);
@@ -35,6 +38,10 @@ export function Navbar() {
   const isActive = (href: string) => {
     if (href.startsWith("/#")) return pathname === "/";
     return pathname === href;
+  };
+
+  const toggleLocale = () => {
+    router.replace(pathname, { locale: locale === "es" ? "en" : "es" });
   };
 
   const pill = scrolled
@@ -98,13 +105,12 @@ export function Navbar() {
             return (
               <li key={link.href} className="flex flex-col items-center gap-1.5">
                 <Link
-                  href={link.href}
+                  href={link.href as "/"}
                   className="eyebrow text-[11px] transition-colors duration-200 hover:opacity-100"
                   style={{ color: active ? "white" : cream }}
                 >
                   {link.label}
                 </Link>
-                {/* Dot activo */}
                 <span
                   className="w-1 h-1 rounded-full transition-all duration-300"
                   style={{
@@ -120,6 +126,21 @@ export function Navbar() {
 
         {/* Acciones */}
         <div className="flex items-center gap-2">
+          {/* Selector de idioma */}
+          <button
+            onClick={toggleLocale}
+            className="hidden sm:flex items-center eyebrow text-[10px] px-2.5 py-1 rounded-full transition-all"
+            style={{
+              color: cream,
+              border: "1px solid rgba(255,255,255,0.22)",
+              background: "rgba(255,255,255,0.08)",
+              letterSpacing: "0.1em",
+            }}
+            aria-label="Switch language"
+          >
+            {locale === "es" ? "EN" : "ES"}
+          </button>
+
           <Link
             href="/#contacto"
             className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 eyebrow text-[11px] press-btn"
@@ -129,7 +150,7 @@ export function Navbar() {
                 : { background: "rgba(255,255,255,0.14)", border: "1px solid rgba(255,255,255,0.28)", color: "white", transition: "background 0.4s ease" }
             }
           >
-            Reservá
+            {t("reserva")}
           </Link>
 
           <a
@@ -151,7 +172,7 @@ export function Navbar() {
             onClick={() => setMenuOpen(!menuOpen)}
             className="lg:hidden grid place-items-center h-10 w-10 text-xl transition-colors"
             style={{ color: cream }}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={menuOpen ? t("cerrarMenu") : t("abrirMenu")}
           >
             <i className={menuOpen ? "ti ti-x" : "ti ti-menu-2"} />
           </button>
@@ -176,7 +197,7 @@ export function Navbar() {
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={link.href as "/"}
                   className="flex items-center justify-between py-3.5 eyebrow text-[12px]"
                   style={{
                     color: active ? "var(--gold-bright)" : "rgba(245,241,236,0.72)",
@@ -191,13 +212,26 @@ export function Navbar() {
               );
             })}
           </div>
-          <div className="px-5 pb-5 pt-3">
+          <div className="px-5 pb-3 pt-2 flex items-center justify-between gap-2 border-t border-white/5">
+            <button
+              onClick={toggleLocale}
+              className="flex-1 flex items-center justify-center eyebrow text-[11px] py-2.5 rounded-full"
+              style={{
+                color: "rgba(245,241,236,0.72)",
+                border: "1px solid rgba(224,176,85,0.2)",
+                background: "rgba(255,255,255,0.05)",
+              }}
+            >
+              {locale === "es" ? "🇬🇧 English" : "🇦🇷 Español"}
+            </button>
+          </div>
+          <div className="px-5 pb-5 pt-2">
             <Link
               href="/#contacto"
               className="flex items-center justify-center rounded-full py-3.5 eyebrow text-[12px] press-btn"
               style={{ background: "var(--gold-bright)", color: "var(--deepgreen)" }}
             >
-              Reservá ahora
+              {t("reservaAhora")}
             </Link>
           </div>
         </div>

@@ -1,7 +1,13 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { InkBleed } from "@/components/ink-bleed";
 import { StaggerReveal } from "@/components/stagger-reveal";
 
 export function Hero() {
+  const t = useTranslations("hero");
+  const tNav = useTranslations("nav");
+
   return (
     <section
       id="inicio"
@@ -45,29 +51,28 @@ export function Hero() {
             className="reveal eyebrow text-[12px] mb-6"
             style={{ color: "#e6c68a" }}
           >
-            Tafí del Valle · Tucumán, Argentina
+            {t("eyebrow")}
           </p>
           <InkBleed
             as="h1"
             className="font-serif text-white leading-[0.95] tracking-[-0.02em] text-6xl md:text-7xl lg:text-[5.5rem] font-medium"
           >
-            La{" "}
+            {t("h1a")}{" "}
             <span
               className="italic font-normal"
               style={{ color: "#e7b24a" }}
             >
-              esencia
+              {t("h1accent")}
             </span>
             <br />
-            de Tafí del Valle
+            {t("h1b")}
           </InkBleed>
           <StaggerReveal>
           <p
             className="text-lg md:text-xl mt-7 max-w-xl leading-relaxed"
             style={{ color: "rgba(245,241,236,0.92)" }}
           >
-            Excursiones y caminatas guiadas por Sergio y Naty — una familia que
-            vive y respira estos valles.
+            {t("desc")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-10">
             <a
@@ -75,7 +80,7 @@ export function Hero() {
               className="press-btn inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[13px] eyebrow text-white"
               style={{ background: "var(--green)" }}
             >
-              Descubrí Tafí <i className="ti ti-arrow-right text-base" />
+              {t("ctaPrimary")} <i className="ti ti-arrow-right text-base" />
             </a>
             <a
               href="#contacto"
@@ -87,7 +92,7 @@ export function Hero() {
                 backdropFilter: "blur(4px)",
               }}
             >
-              Hablá con nosotros
+              {t("ctaSecondary")}
             </a>
           </div>
           </StaggerReveal>
@@ -100,7 +105,7 @@ export function Hero() {
           style={{ background: "var(--gold)" }}
         />
         <span className="eyebrow text-[11px] text-white/80">
-          Desde 2025 · Familia Tafinista
+          {t("badge")}
         </span>
       </div>
     </section>

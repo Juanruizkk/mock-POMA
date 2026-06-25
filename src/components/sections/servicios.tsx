@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { InkBleed } from "@/components/ink-bleed";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,6 +11,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function Servicios() {
+  const t = useTranslations("servicios");
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -17,7 +19,6 @@ export function Servicios() {
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Entrada escalonada y sobria de las dos cards.
         gsap.from(".svc-card", {
           opacity: 0,
           y: 24,
@@ -33,7 +34,6 @@ export function Servicios() {
           },
         });
 
-        // Parallax interno: la foto se mueve apenas más lento que su card.
         gsap.utils.toArray<HTMLElement>(".svc-card img").forEach((img) => {
           gsap.fromTo(
             img,
@@ -51,7 +51,6 @@ export function Servicios() {
           );
         });
 
-        // Bloque verde "Turismo responsable": slide sutil al entrar.
         gsap.from(".svc-pledge", {
           opacity: 0,
           x: 28,
@@ -80,24 +79,23 @@ export function Servicios() {
             className="reveal eyebrow text-[12px] mb-4"
             style={{ color: "var(--terra)" }}
           >
-            Lo que hacemos
+            {t("eyebrow")}
           </p>
           <InkBleed
             as="h2"
             className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[0.98] tracking-[-0.02em] font-medium"
             style={{ color: "var(--deepgreen)" }}
           >
-            Dos formas de
+            {t("h2a")}
             <br />
-            descubrir el valle
+            {t("h2b")}
           </InkBleed>
         </div>
         <p
           className="reveal max-w-sm text-[16px] leading-relaxed"
           style={{ color: "var(--muted)" }}
         >
-          Elegí el ritmo de tu aventura: la comodidad de un recorrido en
-          vehículo o la intimidad de un sendero a pie.
+          {t("desc")}
         </p>
       </div>
 
@@ -132,26 +130,19 @@ export function Servicios() {
             >
               <i className="ti ti-car" />
             </span>
-            <p
-              className="eyebrow text-[11px] mb-3"
-              style={{ color: "var(--apricot)" }}
-            >
-              Con Sergio al volante
+            <p className="eyebrow text-[11px] mb-3" style={{ color: "var(--apricot)" }}>
+              {t("vehiculo.eyebrow")}
             </p>
             <h3 className="font-serif text-3xl lg:text-4xl text-white font-medium leading-tight">
-              Excursiones en Vehículo
+              {t("vehiculo.title")}
             </h3>
             <p className="text-white/85 mt-3 max-w-md leading-relaxed">
-              Recorridos cómodos y seguros por los Valles Calchaquíes,
-              Cafayate, El Pelado y más.
+              {t("vehiculo.desc")}
             </p>
             <span className="mt-6 inline-flex items-center gap-2 text-[12px] eyebrow text-white/90">
-              Ver excursiones <i className="ti ti-arrow-right" />
+              {t("vehiculo.cta")} <i className="ti ti-arrow-right" />
             </span>
-            <span
-              className="svc-underline block h-[2.5px] mt-3"
-              style={{ background: "var(--gold)" }}
-            />
+            <span className="svc-underline block h-[2.5px] mt-3" style={{ background: "var(--gold)" }} />
           </div>
         </Link>
 
@@ -185,25 +176,19 @@ export function Servicios() {
             >
               <i className="ti ti-mountain" />
             </span>
-            <p
-              className="eyebrow text-[11px] mb-3"
-              style={{ color: "var(--apricot)" }}
-            >
-              Con Naty al frente
+            <p className="eyebrow text-[11px] mb-3" style={{ color: "var(--apricot)" }}>
+              {t("trekking.eyebrow")}
             </p>
             <h3 className="font-serif text-3xl lg:text-4xl text-white font-medium leading-tight">
-              Trekking &amp; Caminatas
+              {t("trekking.title")}
             </h3>
             <p className="text-white/85 mt-3 max-w-xs leading-relaxed">
-              Senderos, cascadas y cumbres a tu ritmo.
+              {t("trekking.desc")}
             </p>
             <span className="mt-6 inline-flex items-center gap-2 text-[12px] eyebrow text-white/90">
-              Ver caminatas <i className="ti ti-arrow-right" />
+              {t("trekking.cta")} <i className="ti ti-arrow-right" />
             </span>
-            <span
-              className="svc-underline block h-[2.5px] mt-3"
-              style={{ background: "var(--gold)" }}
-            />
+            <span className="svc-underline block h-[2.5px] mt-3" style={{ background: "var(--gold)" }} />
           </div>
         </Link>
       </div>
@@ -214,8 +199,7 @@ export function Servicios() {
           className="press-btn inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-[13px] eyebrow text-white"
           style={{ background: "var(--green)" }}
         >
-          Ver todas las excursiones y servicios{" "}
-          <i className="ti ti-arrow-right text-base" />
+          {t("ctaTodos")} <i className="ti ti-arrow-right text-base" />
         </Link>
       </div>
 
@@ -225,27 +209,16 @@ export function Servicios() {
       >
         <span
           className="grid place-items-center h-11 w-11 rounded-full text-xl shrink-0"
-          style={{
-            background: "rgba(192,138,45,0.25)",
-            color: "var(--gold-bright)",
-          }}
+          style={{ background: "rgba(192,138,45,0.25)", color: "var(--gold-bright)" }}
         >
           <i className="ti ti-leaf" />
         </span>
         <div className="flex-1">
-          <p className="font-serif text-xl text-white font-medium">
-            Turismo responsable y sostenible
-          </p>
-          <p className="text-white/70 text-[15px] mt-1">
-            Cuidamos cada sendero, cada piedra y cada comunidad que nos recibe
-            en el camino.
-          </p>
+          <p className="font-serif text-xl text-white font-medium">{t("pledge.title")}</p>
+          <p className="text-white/70 text-[15px] mt-1">{t("pledge.desc")}</p>
         </div>
-        <span
-          className="eyebrow text-[11px]"
-          style={{ color: "var(--gold-bright)" }}
-        >
-          Compromiso PÓMA
+        <span className="eyebrow text-[11px]" style={{ color: "var(--gold-bright)" }}>
+          {t("pledge.badge")}
         </span>
       </div>
     </section>

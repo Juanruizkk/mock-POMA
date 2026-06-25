@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Hanken_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
 const fraunces = Fraunces({
@@ -63,9 +61,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen antialiased selection:bg-primary-fixed-dim/30 selection:text-primary">
         <SmoothScroll />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

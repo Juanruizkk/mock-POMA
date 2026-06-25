@@ -1,0 +1,269 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "quienes": "About Us",
+    "servicios": "Services & Excursions",
+    "galeria": "Gallery",
+    "contacto": "Contact",
+    "reserva": "Book Now",
+    "reservaAhora": "Book Now",
+    "abrirMenu": "Open menu",
+    "cerrarMenu": "Close menu"
+  },
+  "hero": {
+    "eyebrow": "Tafí del Valle · Tucumán, Argentina",
+    "h1a": "The",
+    "h1accent": "essence",
+    "h1b": "of Tafí del Valle",
+    "desc": "Guided excursions and hikes led by Sergio and Naty — a family that lives and breathes these valleys.",
+    "ctaPrimary": "Discover Tafí",
+    "ctaSecondary": "Talk to us",
+    "badge": "Since 2025 · Local Family"
+  },
+  "quienes": {
+    "eyebrow": "About us",
+    "h2a": "One family,",
+    "h2accent": "two passions",
+    "h2b": "one valley",
+    "p1": "PÓMA was born on October 15, 2025, founded by <b>Sergio</b> and <b>Naty</b>, both Tourism Professionals deeply in love with their land. We are not an agency: we are neighbors who decided to share what we love most.",
+    "p2": "We believe in honest, close, and nature-respectful tourism that honors the history and people of the Calchaquí Valleys.",
+    "divider": "Tafí del Valle · Calchaquí Valleys",
+    "caption": "Founders",
+    "sergio": {
+      "role": "Vehicle excursions",
+      "desc": "Leads the tours and knows every road through the Calchaquí Valleys.",
+      "cta": "See excursions"
+    },
+    "naty": {
+      "role": "Trekking & hikes",
+      "desc": "Mountain guide, in love with the trails and peaks of the valley.",
+      "cta": "See hikes"
+    }
+  },
+  "servicios": {
+    "eyebrow": "What we do",
+    "h2a": "Two ways to",
+    "h2b": "discover the valley",
+    "desc": "Choose the pace of your adventure: the comfort of a vehicle tour or the intimacy of a trail on foot.",
+    "vehiculo": {
+      "eyebrow": "With Sergio at the wheel",
+      "title": "Vehicle Excursions",
+      "desc": "Comfortable and safe tours through the Calchaquí Valleys, Cafayate, El Pelado and more.",
+      "cta": "See excursions"
+    },
+    "trekking": {
+      "eyebrow": "With Naty in the lead",
+      "title": "Trekking & Hikes",
+      "desc": "Trails, waterfalls and peaks at your own pace.",
+      "cta": "See hikes"
+    },
+    "ctaTodos": "See all excursions and services",
+    "pledge": {
+      "title": "Responsible and sustainable tourism",
+      "desc": "We take care of every trail, every stone and every community that welcomes us along the way.",
+      "badge": "PÓMA Commitment"
+    }
+  },
+  "galeria": {
+    "eyebrow": "The valley in images",
+    "h2a": "Every photo,",
+    "h2accent": "a real",
+    "h2b": "story"
+  },
+  "contacto": {
+    "eyebrow": "Let's talk",
+    "h2a": "Let's plan your",
+    "h2accent": "next adventure",
+    "desc": "Write to us on WhatsApp or leave us your inquiry. Sergio and Naty respond in person, like good neighbors of the valley.",
+    "waLabel": "WhatsApp · we reply in person",
+    "waPhone": "+54 9 381 203-2123",
+    "igLabel": "Instagram",
+    "igHandle": "@poma.tafidelvalle",
+    "locationLabel": "Location",
+    "locationText": "Tafí del Valle, Tucumán, Argentina",
+    "formEyebrow": "Leave us a message",
+    "formTitle": "Send an inquiry",
+    "mapCoords": "26°51′S · 65°42′W",
+    "mapPlace": "Tafí del Valle",
+    "mapRegion": "Tucumán · ARG"
+  },
+  "form": {
+    "nombre": "Name",
+    "nombrePlaceholder": "What's your name?",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "telefono": "Phone",
+    "telefonoPlaceholder": "+54 9 381 000-0000",
+    "actividad": "Excursion / Activity",
+    "actividadPlaceholder": "Select an activity…",
+    "mensaje": "Message",
+    "mensajePlaceholder": "Tell us what you'd like to discover...",
+    "enviar": "Send inquiry",
+    "enviando": "Sending…",
+    "successTitle": "Inquiry sent!",
+    "successDesc": "Sergio or Naty will get back to you shortly. In the meantime, you can write to us on WhatsApp.",
+    "successReset": "Send another inquiry",
+    "errorGeneric": "Something went wrong, please try again.",
+    "errorConexion": "Could not send. Check your connection.",
+    "errorServidor": "Error connecting to the server.",
+    "errorCampos": "Required fields are missing.",
+    "errorEmail": "Invalid email."
+  },
+  "footer": {
+    "tagline": "The essence of Tafí del Valle",
+    "navTitle": "Navigation",
+    "followTitle": "Follow us",
+    "copyright": "© {year} PÓMA Tafí del Valle · Made with love in the Calchaquí Valleys",
+    "credits": "Tourism Professionals · Sergio & Naty"
+  },
+  "serviciosPage": {
+    "meta": {
+      "title": "Services & Excursions",
+      "desc": "Interpreter service, vehicle tours and guided hikes through Tafí del Valle and the Calchaquí Valleys."
+    },
+    "hero": {
+      "eyebrow": "Tafí del Valle · Tucumán",
+      "h1a": "Services",
+      "h1accent": "& excursions",
+      "h1b": "in Tafí del Valle",
+      "desc": "Every outing is guided by Sergio or Naty, two tourism professionals who know the valley like the back of their hand.",
+      "ctaPrimary": "See excursions",
+      "ctaSecondary": "Inquire",
+      "badge": "Services · Poma · Tafí del Valle"
+    },
+    "svcs": {
+      "eyebrow": "Services",
+      "h2": "How we accompany you",
+      "interprete": {
+        "eyebrow": "Languages",
+        "title": "Interpreter Service",
+        "desc": "Bilingual accompaniment (Spanish / English) so every historical and cultural story of the valley comes across with full clarity."
+      },
+      "vehiculo": {
+        "eyebrow": "Mobility",
+        "title": "Vehicle Tours",
+        "desc": "Safe and comfortable mobility for groups and individual passengers, with equipped vehicles and drivers who know every road."
+      },
+      "medida": {
+        "eyebrow": "Personalization",
+        "title": "Tailored Experiences",
+        "desc": "We design itineraries according to your interests: from private tastings at high-altitude wineries to picnics in untouched valleys."
+      }
+    },
+    "aventura": {
+      "eyebrow": "Choose your adventure",
+      "destinos": "14 destinations",
+      "h2a": "All the",
+      "h2accent": "excursions",
+      "h2b": "of the valley"
+    },
+    "politicas": {
+      "eyebrow": "Bookings",
+      "h2a": "Booking",
+      "h2b": "Policy",
+      "desc": "We work with a 50% deposit to confirm your spot. The remaining balance is paid on the day of the excursion, before departure.",
+      "ctaWhatsapp": "Book via WhatsApp",
+      "ctaPhone": "Call now",
+      "stamp": "50%",
+      "stampLabel": "Booking Policy 2025"
+    },
+    "contacto": {
+      "eyebrow": "Let's talk",
+      "h2a": "Book your",
+      "h2accent": "next excursion",
+      "desc": "Choose the excursion that calls to you and write to us. Sergio and Naty will put the plan together with you."
+    }
+  },
+  "excursiones": {
+    "filtros": {
+      "todos": "All",
+      "vehiculo": "By Vehicle",
+      "baja": "Low Difficulty",
+      "media": "Medium Difficulty",
+      "alta": "High Difficulty"
+    },
+    "dificultad": {
+      "Baja": "Low",
+      "Media": "Medium",
+      "Alta": "High"
+    },
+    "vehiculoLabel": "Vehicle",
+    "galeria": "Photo gallery",
+    "whatsappCta": "Inquire on WhatsApp",
+    "cerrar": "Close",
+    "anterior": "Previous",
+    "siguiente": "Next",
+    "items": {
+      "cascadasCosta": {
+        "title": "Coastal Waterfalls",
+        "tipo": "Trekking",
+        "desc": "A journey through lush vegetation, flowing water and landscapes that surprise at every step. Perfect for families looking to connect with nature."
+      },
+      "cienaga": {
+        "title": "La Ciénaga",
+        "tipo": "Trekking",
+        "desc": "A mountain retreat located at over 2,700 meters above sea level, La Ciénaga is a high-altitude valley that combines history, landscape and culture in a single journey. The path crosses ancient stone walls, freely grazing sheep and horses along the trail, while your guide shares stories about the Tafí culture, a pre-Columbian civilization that once inhabited this region. Upon arrival, a mountain shelter — once a small rural schoolhouse — awaits with hot water and a well-earned rest. A demanding destination, but with rewards you won't forget."
+      },
+      "pelado": {
+        "title": "Cerro El Pelado",
+        "tipo": "Night Trekking",
+        "desc": "At 2,680 meters above sea level, this hill divides the Tafí Valley in two and offers one of the most spectacular views of the natural landscape. At night, the experience transforms: the illuminated valley, the silence of the mountain and a sky full of stars turn the hike into something hard to put into words. The trail is marked and requires no special equipment — just the desire to rise above the stones. Ideal for those who want to experience Tafí from another angle, literally."
+      },
+      "cafayate": {
+        "title": "Cafayate",
+        "tipo": "Vehicle Excursion",
+        "desc": "One of the most iconic destinations in northern Argentina, Cafayate surprises with the diversity of experiences it offers in a single day. Unique rock formations, wineries, regional cuisine and a landscape that changes color kilometer by kilometer along National Route 40. It's culture, nature and flavor in one journey, with the imposing backdrop of the Calchaquí Valleys."
+      },
+      "santaMaria": {
+        "title": "Santa María – Capia Route",
+        "tipo": "Vehicle Excursion",
+        "desc": "Santa María holds one of the most deeply rooted traditions in northwest Argentina: the capia, the sacred white corn of indigenous peoples. This excursion combines the landscapes of the Calchaquí Valleys with a unique artisanal experience, where you learn first-hand how this ancestral crop is cultivated. History, culture and flavors that connect you with centuries of Calchaquí identity."
+      },
+      "sosa": {
+        "title": "Quebrada de Los Sosa",
+        "tipo": "Vehicle Excursion",
+        "desc": "A natural corridor connecting different ecosystems, allowing you to observe the transition between arid and humid zones. The route through the Tucumán jungle winds between rivers, lush vegetation and natural viewpoints that invite you to stop and breathe. Ideal for birdwatching and for those seeking a relaxed experience without sacrificing unique landscapes. A different postcard from the mountains, but equally stunning."
+      },
+      "vueltaLago": {
+        "title": "Around the Lake",
+        "tipo": "Vehicle Excursion",
+        "desc": "A drive through the most beautiful landscapes of Tafí del Valle, following the shoreline of La Angostura reservoir. Mountains reflected in the water, green in every shade and a tranquility that spreads just by rolling down the window. Perfect for families, with stops at viewpoints that offer some of the best scenery in the region."
+      },
+      "quilmes": {
+        "title": "Quilmes",
+        "tipo": "Vehicle Excursion",
+        "desc": "The Ruins of Quilmes are one of the most important archaeological sites in the region and one of Tucumán's most popular attractions. The Quilmes were an indigenous people who achieved enormous social and economic development, with up to 3,000 inhabitants in the urban area and 10,000 in the surrounding areas. Today you can explore the site accompanied by guides who are descendants of the Quilme people, sharing the history and worldview of their ancestors. A place that transcends tourism and becomes an encounter with memory."
+      },
+      "lomaCruz": {
+        "title": "Loma La Cruz",
+        "tipo": "Trekking",
+        "desc": "Just 20 to 30 minutes' walk from the center of Tafí del Valle, you can reach one of the summits with the best views of the entire valley. No special equipment or intensive training required — just the will to rise above the stones. The trail is marked and lets you set your own pace. When the effort of the climb fades, the panorama that appears makes every step worthwhile."
+      },
+      "fuerteViejo": {
+        "title": "Fuerte Viejo",
+        "tipo": "Trekking",
+        "desc": "The route starts in the Molle Solo area, before Estancia Las Carreras, and reaches up to 3,300 meters of altitude. Along the way you can immerse yourself in the Tafí culture, encounter local shepherds and discover traces of local history among grasslands and rocky hills. Culture, history and nature come together on these paths that indigenous peoples once used to connect the Tafí Valley with the Tucumán lowlands, and through which colonial currents later arrived. A real challenge for those seeking more than a stroll."
+      },
+      "cueva": {
+        "title": "Cueva Los Corrales",
+        "tipo": "Trekking",
+        "desc": "Cueva de Los Corrales is located in the Quebrada de Los Corrales, in El Infiernillo, and is a high-altitude archaeological site with evidence of human occupation dating back over 3,000 years. The trail to get there is accessible and the reward is remarkable: a cave with well-preserved remains, mortars carved into the rock and a landscape of Calchaquí peaks that few people ever see. A combination of nature and history that never fails to surprise."
+      },
+      "casco": {
+        "title": "Historic City Center",
+        "tipo": "Historic Walk",
+        "desc": "The historic city of San Miguel de Tucumán invites you to immerse yourself in the story of Argentina's independence, which was born on its cobblestone streets and whose spirit endures to this day. The route passes through the Historic House of Independence, the Cathedral, Independence Square with Lola Mora's Statue of Liberty, and the surrounding buildings. A short but history-dense walk, perfect for understanding where we come from."
+      },
+      "alisos": {
+        "title": "Los Alisos Waterfall",
+        "tipo": "Trekking",
+        "desc": "The 300-meter ascent to Los Alisos Waterfall leads to a 60-meter water cascade, one of the province's great natural wonders. During the hike along the slopes of Cerro Muñoz, condors soar overhead and the condor colony can be observed. The sound of the water announcing itself before you arrive, and the impact of the falls from below, are among those moments that stay with you forever. In winter, the water freezes and transforms the place into an otherworldly postcard."
+      },
+      "rincon": {
+        "title": "El Rincón Waterfall",
+        "tipo": "Trekking",
+        "desc": "Between Tafí del Valle and El Mollar, a true natural treasure awaits those who dare to walk without hurry, with all their senses awake. El Rincón Waterfall appears as an unexpected gift at the foothills of Cerro Muñoz, in an area where the landscape commands respect, silence and a deep connection with nature. Without official signage or tourist infrastructure, that's precisely where its charm lies. An ideal destination for medium-difficulty trekking, recommended for people with basic mountain experience."
+      }
+    }
+  }
+}

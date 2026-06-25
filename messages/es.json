@@ -1,0 +1,269 @@
+{
+  "nav": {
+    "inicio": "Inicio",
+    "quienes": "Quiénes Somos",
+    "servicios": "Servicios y Excursiones",
+    "galeria": "Galería",
+    "contacto": "Contacto",
+    "reserva": "Reservá",
+    "reservaAhora": "Reservá ahora",
+    "abrirMenu": "Abrir menú",
+    "cerrarMenu": "Cerrar menú"
+  },
+  "hero": {
+    "eyebrow": "Tafí del Valle · Tucumán, Argentina",
+    "h1a": "La",
+    "h1accent": "esencia",
+    "h1b": "de Tafí del Valle",
+    "desc": "Excursiones y caminatas guiadas por Sergio y Naty — una familia que vive y respira estos valles.",
+    "ctaPrimary": "Descubrí Tafí",
+    "ctaSecondary": "Hablá con nosotros",
+    "badge": "Desde 2025 · Familia Tafinista"
+  },
+  "quienes": {
+    "eyebrow": "Quiénes somos",
+    "h2a": "Una familia,",
+    "h2accent": "dos pasiones",
+    "h2b": "un mismo valle",
+    "p1": "PÓMA nació el 15 de octubre de 2025, de la mano de <b>Sergio</b> y <b>Naty</b>, ambos Técnicos en Turismo enamorados de su tierra. No somos una agencia: somos vecinos que decidimos compartir lo que más amamos.",
+    "p2": "Creemos en un turismo honesto, cercano y respetuoso con la naturaleza, la historia y la gente de los Valles Calchaquíes.",
+    "divider": "Tafí del Valle · Valles Calchaquíes",
+    "caption": "Fundadores",
+    "sergio": {
+      "role": "Excursiones en vehículo",
+      "desc": "Lidera los recorridos y conoce cada camino de los Valles Calchaquíes.",
+      "cta": "Ver excursiones"
+    },
+    "naty": {
+      "role": "Trekking & caminatas",
+      "desc": "Guía de montaña, enamorada de los senderos y cumbres del valle.",
+      "cta": "Ver caminatas"
+    }
+  },
+  "servicios": {
+    "eyebrow": "Lo que hacemos",
+    "h2a": "Dos formas de",
+    "h2b": "descubrir el valle",
+    "desc": "Elegí el ritmo de tu aventura: la comodidad de un recorrido en vehículo o la intimidad de un sendero a pie.",
+    "vehiculo": {
+      "eyebrow": "Con Sergio al volante",
+      "title": "Excursiones en Vehículo",
+      "desc": "Recorridos cómodos y seguros por los Valles Calchaquíes, Cafayate, El Pelado y más.",
+      "cta": "Ver excursiones"
+    },
+    "trekking": {
+      "eyebrow": "Con Naty al frente",
+      "title": "Trekking & Caminatas",
+      "desc": "Senderos, cascadas y cumbres a tu ritmo.",
+      "cta": "Ver caminatas"
+    },
+    "ctaTodos": "Ver todas las excursiones y servicios",
+    "pledge": {
+      "title": "Turismo responsable y sostenible",
+      "desc": "Cuidamos cada sendero, cada piedra y cada comunidad que nos recibe en el camino.",
+      "badge": "Compromiso PÓMA"
+    }
+  },
+  "galeria": {
+    "eyebrow": "El valle en imágenes",
+    "h2a": "Cada foto,",
+    "h2accent": "una historia",
+    "h2b": "real"
+  },
+  "contacto": {
+    "eyebrow": "Hablemos",
+    "h2a": "Planifiquemos tu",
+    "h2accent": "próxima aventura",
+    "desc": "Escribinos por WhatsApp o dejanos tu consulta. Sergio y Naty te responden en persona, como buenos vecinos del valle.",
+    "waLabel": "WhatsApp · respondemos en persona",
+    "waPhone": "+54 9 381 203-2123",
+    "igLabel": "Instagram",
+    "igHandle": "@poma.tafidelvalle",
+    "locationLabel": "Ubicación",
+    "locationText": "Tafí del Valle, Tucumán, Argentina",
+    "formEyebrow": "Dejanos tu mensaje",
+    "formTitle": "Enviá una consulta",
+    "mapCoords": "26°51′S · 65°42′O",
+    "mapPlace": "Tafí del Valle",
+    "mapRegion": "Tucumán · ARG"
+  },
+  "form": {
+    "nombre": "Nombre",
+    "nombrePlaceholder": "¿Cómo te llamás?",
+    "email": "Email",
+    "emailPlaceholder": "tu@email.com",
+    "telefono": "Teléfono",
+    "telefonoPlaceholder": "+54 9 381 000-0000",
+    "actividad": "Excursión / Actividad",
+    "actividadPlaceholder": "Seleccioná una actividad…",
+    "mensaje": "Mensaje",
+    "mensajePlaceholder": "Contanos qué te gustaría descubrir...",
+    "enviar": "Enviar consulta",
+    "enviando": "Enviando…",
+    "successTitle": "¡Consulta enviada!",
+    "successDesc": "Sergio o Naty te responden a la brevedad. Mientras tanto, podés escribirnos por WhatsApp.",
+    "successReset": "Enviar otra consulta",
+    "errorGeneric": "Algo salió mal, intentá de nuevo.",
+    "errorConexion": "No se pudo enviar. Revisá tu conexión.",
+    "errorServidor": "Error al conectar con el servidor.",
+    "errorCampos": "Faltan campos obligatorios.",
+    "errorEmail": "Email inválido."
+  },
+  "footer": {
+    "tagline": "La esencia de Tafí del Valle",
+    "navTitle": "Navegación",
+    "followTitle": "Seguinos",
+    "copyright": "© {year} PÓMA Tafí del Valle · Hecho con cariño en los Valles Calchaquíes",
+    "credits": "Técnicos en Turismo · Sergio & Naty"
+  },
+  "serviciosPage": {
+    "meta": {
+      "title": "Servicios y Excursiones",
+      "desc": "Servicio de intérprete, salidas en vehículo y excursiones a pie por Tafí del Valle y los Valles Calchaquíes."
+    },
+    "hero": {
+      "eyebrow": "Tafí del Valle · Tucumán",
+      "h1a": "Servicios",
+      "h1accent": "y excursiones",
+      "h1b": "en Tafí del Valle",
+      "desc": "Cada salida está guiada por Sergio o Naty, dos técnicos en turismo que conocen el valle como la palma de su mano.",
+      "ctaPrimary": "Ver excursiones",
+      "ctaSecondary": "Consultar",
+      "badge": "Servicios · Poma · Tafí del Valle"
+    },
+    "svcs": {
+      "eyebrow": "Servicios",
+      "h2": "Cómo te acompañamos",
+      "interprete": {
+        "eyebrow": "Idiomas",
+        "title": "Servicio de Intérprete",
+        "desc": "Acompañamiento bilingüe (español / inglés) para que cada relato histórico y cultural del valle llegue con total claridad."
+      },
+      "vehiculo": {
+        "eyebrow": "Movilidad",
+        "title": "Salidas en Vehículo",
+        "desc": "Movilidad segura y confortable para grupos y pasajeros individuales, con unidades equipadas y conductores que conocen cada camino."
+      },
+      "medida": {
+        "eyebrow": "Personalización",
+        "title": "Experiencias a Medida",
+        "desc": "Diseñamos itinerarios según tus intereses: desde catas privadas en bodegas de altura hasta picnics en valles vírgenes."
+      }
+    },
+    "aventura": {
+      "eyebrow": "Elegí tu aventura",
+      "destinos": "14 destinos",
+      "h2a": "Todas las",
+      "h2accent": "excursiones",
+      "h2b": "del valle"
+    },
+    "politicas": {
+      "eyebrow": "Reservas",
+      "h2a": "Política de",
+      "h2b": "Reserva",
+      "desc": "Trabajamos con seña del 50 % para confirmar tu lugar. El saldo restante se abona el día de la excursión, antes de partir.",
+      "ctaWhatsapp": "Reservar por WhatsApp",
+      "ctaPhone": "Llamar ahora",
+      "stamp": "50%",
+      "stampLabel": "Política de Reserva 2025"
+    },
+    "contacto": {
+      "eyebrow": "Hablemos",
+      "h2a": "Reservá tu",
+      "h2accent": "próxima excursión",
+      "desc": "Elegí la excursión que te llama y escribinos. Sergio y Naty arman el plan con vos."
+    }
+  },
+  "excursiones": {
+    "filtros": {
+      "todos": "Todos",
+      "vehiculo": "En Vehículo",
+      "baja": "Dificultad Baja",
+      "media": "Dificultad Media",
+      "alta": "Dificultad Alta"
+    },
+    "dificultad": {
+      "Baja": "Baja",
+      "Media": "Media",
+      "Alta": "Alta"
+    },
+    "vehiculoLabel": "Vehículo",
+    "galeria": "Galería de fotos",
+    "whatsappCta": "Consultar por WhatsApp",
+    "cerrar": "Cerrar",
+    "anterior": "Anterior",
+    "siguiente": "Siguiente",
+    "items": {
+      "cascadasCosta": {
+        "title": "Cascadas de la Costa",
+        "tipo": "Trekking",
+        "desc": "Un recorrido entre vegetación, agua y paisajes que sorprenden en cada paso. Perfecto para disfrutar en familia y conectar con la naturaleza."
+      },
+      "cienaga": {
+        "title": "La Ciénaga",
+        "tipo": "Trekking",
+        "desc": "Paraje de montaña ubicado a más de 2.700 metros sobre el nivel del mar, La Ciénaga es un valle de altura que combina historia, paisaje y cultura en un solo recorrido. El camino atraviesa pircas históricas, ovejas que pastorean libremente y caballos que se cruzan en el sendero, mientras el guía va compartiendo datos sobre la cultura tafí, una civilización precolombina que habitó esta región. Al llegar, un refugio de montaña que funciona en lo que fuera una antigua escuelita espera con agua caliente y un descanso bien ganado. Un destino exigente, pero con recompensa de esas que no se olvidan."
+      },
+      "pelado": {
+        "title": "Cerro El Pelado",
+        "tipo": "Trekking Nocturno",
+        "desc": "A 2.680 metros sobre el nivel del mar, este cerro divide en dos el Valle de Tafí y permite una de las vistas más espectaculares de ese escenario natural. De noche, la experiencia se transforma: el valle iluminado, el silencio de la montaña y un cielo cargado de estrellas convierten la caminata en algo difícil de explicar con palabras. El sendero está señalizado y no requiere equipamiento especial, solo ganas de elevarse entre las piedras. Ideal para quienes quieren vivir Tafí desde otro ángulo, literalmente."
+      },
+      "cafayate": {
+        "title": "Cafayate",
+        "tipo": "Excursión en Vehículo",
+        "desc": "Uno de los destinos más emblemáticos del norte argentino, Cafayate sorprende con la diversidad de experiencias que ofrece en un solo día. Formaciones rocosas únicas, bodegas, gastronomía regional y un paisaje que cambia de color kilómetro a kilómetro por la Ruta Nacional 40. Es cultura, naturaleza y sabor en un mismo recorrido, con el imponente telón de fondo de los Valles Calchaquíes."
+      },
+      "santaMaria": {
+        "title": "Santa María – Ruta de la Capia",
+        "tipo": "Excursión en Vehículo",
+        "desc": "Santa María guarda una de las tradiciones más arraigadas del noroeste argentino: la capia, el maíz blanco sagrado de los pueblos originarios. Esta excursión combina los paisajes de los Valles Calchaquíes con una experiencia artesanal única, donde se aprende de primera mano cómo se elabora este cultivo ancestral. Historia, cultura y sabores que conectan con siglos de identidad calchaquí."
+      },
+      "sosa": {
+        "title": "Quebrada de Los Sosa",
+        "tipo": "Excursión en Vehículo",
+        "desc": "Corredor natural que conecta distintos ecosistemas y permite observar la transición entre zonas áridas y húmedas. La ruta entre la selva tucumana se abre paso entre ríos, vegetación exuberante y miradores naturales que invitan a frenar y respirar. Ideal para el avistaje de aves y para quienes buscan una experiencia relajada sin sacrificar paisajes únicos. Una postal diferente a la montaña, pero igual de impactante."
+      },
+      "vueltaLago": {
+        "title": "Vuelta al Lago",
+        "tipo": "Excursión en Vehículo",
+        "desc": "Un paseo que recorre los paisajes más lindos de Tafí del Valle siguiendo el contorno del dique La Angostura. Montañas que se reflejan en el agua, verde en todas sus tonalidades y una tranquilidad que se contagia con solo bajar la ventanilla. Perfecto para disfrutar en familia y sin apuro, con paradas en miradores que regalan postales de las mejores de la región."
+      },
+      "quilmes": {
+        "title": "Quilmes",
+        "tipo": "Excursión en Vehículo",
+        "desc": "Las Ruinas de Quilmes son uno de los sitios arqueológicos más importantes de la región y una de las atracciones turísticas más populares de Tucumán. Los Quilmes fueron un pueblo indígena que alcanzó un enorme desarrollo social y económico, llegando a tener 3.000 habitantes en el área urbana y 10.000 en los alrededores. Hoy es posible recorrer el sitio acompañado por guías descendientes del pueblo quilme, quienes transmiten la historia y cosmovisión de sus ancestros. Un lugar que trasciende el turismo y se convierte en un encuentro con la memoria."
+      },
+      "lomaCruz": {
+        "title": "Loma La Cruz",
+        "tipo": "Trekking",
+        "desc": "A tan solo 20 o 30 minutos de caminata desde el centro de Tafí del Valle, se puede llegar a una de las cimas con mejores vistas de todo el valle. No es necesario tener equipamiento especial ni grandes horas de entrenamiento: simplemente ganas de elevarse entre las piedras. El sendero está señalizado y permite elegir el ritmo propio. Cuando la agitación de la caminata se calma, el panorama que aparece es de esos que hacen valer cada paso."
+      },
+      "fuerteViejo": {
+        "title": "Fuerte Viejo",
+        "tipo": "Trekking",
+        "desc": "El recorrido parte desde la zona de Molle Solo, ubicada antes de la Estancia Las Carreras, y llega hasta los 3.300 metros de altura. A lo largo del camino se puede adentrarse en la cultura Tafí, cruzarse con pastores de la zona y descubrir vestigios de la historia local entre pastizales y cerros rocosos. Cultura, historia y naturaleza se combinan en estas sendas que los pueblos originarios usaban para unir el valle de Tafí con la llanura tucumana, y por las que más tarde llegaron las corrientes colonizadoras. Un desafío real para los que buscan algo más que un paseo."
+      },
+      "cueva": {
+        "title": "Cueva Los Corrales",
+        "tipo": "Trekking",
+        "desc": "Cueva de Los Corrales se ubica en la Quebrada de Los Corrales, en El Infiernillo, y es un sitio arqueológico de alta montaña con evidencias de ocupación humana de hace más de 3.000 años. El sendero para llegar es accesible y el premio es notable: una cueva con restos bien preservados, morteros tallados en la roca y un paisaje de cumbres calchaquíes que pocas personas llegan a ver. Una combinación de naturaleza e historia que sorprende."
+      },
+      "casco": {
+        "title": "Casco Céntrico",
+        "tipo": "Caminata Histórica",
+        "desc": "La Ciudad Histórica de San Miguel de Tucumán invita a sumergirse en la gesta de la independencia argentina, que nació en sus calles adoquinadas y cuyo aura perdura hasta el día de hoy. El recorrido pasa por la Casa Histórica de la Independencia, la Iglesia Catedral, la Plaza Independencia con la estatua de la Libertad de Lola Mora, y los distintos edificios que la rodean. Una caminata corta pero densa en historia, perfecta para entender de dónde venimos."
+      },
+      "alisos": {
+        "title": "Cascada Los Alisos",
+        "tipo": "Trekking",
+        "desc": "El ascenso de 300 metros hasta la Cascada de Los Alisos lleva a una caída de agua de 60 metros, una de las grandes bellezas de la provincia. Durante el recorrido por la ladera del Cerro Muñoz, los cóndores sobrevuelan en el cielo y se puede observar la condorera. El sonido del agua anunciándose antes de llegar y el impacto del salto desde abajo son de esos momentos que quedan grabados. En invierno, el agua se congela y transforma el lugar en una postal de otro mundo."
+      },
+      "rincon": {
+        "title": "Cascada El Rincón",
+        "tipo": "Trekking",
+        "desc": "Entre Tafí del Valle y El Mollar, se esconde un verdadero tesoro natural que recompensa a quienes se animan a caminar sin apuro y con los sentidos bien despiertos. La Cascada de El Rincón aparece como un regalo inesperado en el piedemonte del Cerro Muñoz, en una zona donde el paisaje impone respeto, silencio y una conexión profunda con la naturaleza. Sin señalización oficial ni infraestructura turística, justamente ahí radica su encanto. Es un destino ideal para trekking de dificultad media, recomendado para personas con experiencia básica en montaña."
+      }
+    }
+  }
+}

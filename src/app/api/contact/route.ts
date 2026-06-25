@@ -20,8 +20,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "Servicio no configurado." }, { status: 500 });
     }
 
-    console.log("[contact] FORM_TOKEN cargado:", JSON.stringify(FORM_TOKEN));
-
     const res = await fetch(SHEETS_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,12 +35,10 @@ export async function POST(req: NextRequest) {
     });
 
     const text = await res.text();
-    console.log("[contact] Apps Script respondió:", text.slice(0, 300));
     let data: { ok?: boolean; error?: string } = {};
     try {
       data = JSON.parse(text);
     } catch {
-      console.error("Apps Script non-JSON response:", text.slice(0, 500));
       return NextResponse.json({ ok: false, error: "Error al conectar con el servidor." }, { status: 502 });
     }
     if (!data.ok) {
