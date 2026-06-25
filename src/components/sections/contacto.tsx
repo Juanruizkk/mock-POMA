@@ -2,6 +2,7 @@ import { InkBleed } from "@/components/ink-bleed";
 import { StaggerReveal } from "@/components/stagger-reveal";
 import { Reveal } from "@/components/reveal";
 import { SepCerros } from "@/components/separators";
+import { ContactForm } from "@/components/contact-form";
 // Alternativa minimalista (descomentar este import y su uso más abajo):
 // import { SepHairline } from "@/components/separators";
 
@@ -25,9 +26,9 @@ export function Contacto() {
       */}
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pb-14 lg:pb-20 pt-4 lg:pt-6">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {/* ── Columna humana: encabezado + canales + firma ── */}
-          <div>
+          <div className="flex flex-col">
             <p
               className="reveal eyebrow text-[12px] mb-4"
               style={{ color: "var(--gold-bright)" }}
@@ -44,14 +45,14 @@ export function Contacto() {
                 próxima aventura
               </span>
             </InkBleed>
-            <StaggerReveal y={12}>
+            <StaggerReveal y={12} className="flex-1 flex flex-col">
             <p className="mt-5 text-white/75 text-[16px] leading-relaxed max-w-md">
               Escribinos por WhatsApp o dejanos tu consulta. Sergio y Naty te
               responden en persona, como buenos vecinos del valle.
             </p>
 
             {/* WhatsApp + canales secundarios como un bloque único */}
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col flex-1">
               <a
                 href={WHATSAPP}
                 target="_blank"
@@ -106,26 +107,52 @@ export function Contacto() {
                     <i className="ti ti-arrow-right" />
                   </span>
                 </a>
+              </div>
+
+              {/* ── Mapa cartográfico (reemplaza card Ubicación, llega hasta el final del form) ── */}
+              <div
+                className="relative rounded-xl overflow-hidden flex-1 min-h-[140px] mt-5"
+                style={{
+                  border: "1px solid rgba(192,138,45,0.45)",
+                  boxShadow: "0 8px 32px rgba(7,18,13,0.4), inset 0 0 0 1px rgba(192,138,45,0.12)",
+                }}
+              >
+                {/* Marco decorativo dorado interior */}
                 <div
-                  className="flex items-center gap-4 rounded-xl px-5 py-4"
+                  className="absolute inset-[3px] rounded-xl z-10 pointer-events-none"
+                  style={{ border: "1px solid rgba(192,138,45,0.18)" }}
+                />
+
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14238.220943688984!2d-65.71481372387899!3d-26.854095116036994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9422234e110bdd53%3A0x8ef226e18df85b8a!2sPlaza%20Don%20%C3%81ngel%20Miguel%20Esteves!5e0!3m2!1ses!2sar!4v1782398757685!5m2!1ses!2sar"
+                  className="absolute inset-0 w-full h-full"
                   style={{
-                    background: "rgba(250,245,236,0.06)",
-                    border: "1px solid rgba(250,245,236,0.14)",
+                    border: 0,
+                    filter: "sepia(0.25) saturate(0.85) brightness(0.88) contrast(1.05)",
+                  }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Ubicación Tafí del Valle"
+                />
+
+                {/* Overlay inferior con label */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 z-20 px-4 py-3 flex items-end justify-between pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to top, rgba(14,32,24,0.88) 0%, rgba(14,32,24,0.5) 60%, transparent 100%)",
                   }}
                 >
-                  <span
-                    className="grid place-items-center h-11 w-11 rounded-full text-xl shrink-0"
-                    style={{ background: "var(--sand)", color: "var(--green)" }}
-                  >
-                    <i className="ti ti-map-pin" />
-                  </span>
-                  <span className="flex-1">
-                    <span className="block eyebrow text-[10px] text-white/55">
-                      Ubicación
+                  <div>
+                    <span className="block eyebrow text-[9px]" style={{ color: "rgba(192,138,45,0.8)" }}>
+                      26°51′S · 65°42′O
                     </span>
-                    <span className="block text-white text-[15px] font-medium">
-                      Tafí del Valle, Tucumán, Argentina
+                    <span className="block font-serif text-[13px] font-medium leading-tight" style={{ color: "var(--cream)" }}>
+                      Tafí del Valle
                     </span>
+                  </div>
+                  <span className="eyebrow text-[8px]" style={{ color: "rgba(250,245,236,0.4)" }}>
+                    Tucumán · ARG
                   </span>
                 </div>
               </div>
@@ -181,60 +208,7 @@ export function Contacto() {
               Enviá una consulta
             </h3>
 
-            <form className="space-y-6" action={WHATSAPP}>
-              <div>
-                <label
-                  className="block eyebrow text-[11px] mb-2"
-                  style={{ color: "var(--muted)" }}
-                  htmlFor="nombre"
-                >
-                  Nombre
-                </label>
-                <input
-                  id="nombre"
-                  type="text"
-                  placeholder="¿Cómo te llamás?"
-                  className="w-full bg-transparent border-b border-[#d8c9ad] px-1 py-2.5 text-[15px] text-[#2a2a26] placeholder:text-[#a99e88] outline-none transition-colors focus:border-[#c08a2d]"
-                />
-              </div>
-              <div>
-                <label
-                  className="block eyebrow text-[11px] mb-2"
-                  style={{ color: "var(--muted)" }}
-                  htmlFor="email"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="tu@email.com"
-                  className="w-full bg-transparent border-b border-[#d8c9ad] px-1 py-2.5 text-[15px] text-[#2a2a26] placeholder:text-[#a99e88] outline-none transition-colors focus:border-[#c08a2d]"
-                />
-              </div>
-              <div>
-                <label
-                  className="block eyebrow text-[11px] mb-2"
-                  style={{ color: "var(--muted)" }}
-                  htmlFor="mensaje"
-                >
-                  Mensaje
-                </label>
-                <textarea
-                  id="mensaje"
-                  rows={3}
-                  placeholder="Contanos qué te gustaría descubrir..."
-                  className="w-full bg-transparent border-b border-[#d8c9ad] px-1 py-2.5 text-[15px] text-[#2a2a26] placeholder:text-[#a99e88] outline-none transition-colors focus:border-[#c08a2d] resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="press-btn w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-[13px] eyebrow text-white"
-                style={{ background: "var(--green)" }}
-              >
-                Enviar consulta <i className="ti ti-arrow-right text-base" />
-              </button>
-            </form>
+            <ContactForm />
           </Reveal>
         </div>
       </div>

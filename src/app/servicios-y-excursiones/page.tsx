@@ -3,6 +3,7 @@ import { ExcursionCards } from "@/components/excursion-cards";
 import { StaggerReveal } from "@/components/stagger-reveal";
 import { InkBleed } from "@/components/ink-bleed";
 import { Reveal } from "@/components/reveal";
+import { Contacto } from "@/components/sections/contacto";
 
 export const metadata: Metadata = {
   title: "Servicios y Excursiones",
@@ -452,6 +453,8 @@ export default function ServiciosYExcursionesPage() {
           </div>
         </div>
       </section>
+
+      <Contacto />
     </>
   );
 }

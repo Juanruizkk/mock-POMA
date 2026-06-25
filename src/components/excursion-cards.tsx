@@ -415,17 +415,17 @@ export function ExcursionCards() {
       {/* Modal del destino */}
       {selected && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-4 p-0"
           style={{ background: "rgba(6,14,10,0.9)", backdropFilter: "blur(8px)" }}
           onClick={() => setSelected(null)}
         >
           <div
-            className="relative w-full max-w-4xl overflow-hidden flex shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
-            style={{ height: "min(92vh, 760px)", borderRadius: "6px" }}
+            className="relative w-full sm:max-w-4xl overflow-hidden flex flex-col md:flex-row shadow-[0_32px_80px_rgba(0,0,0,0.6)] rounded-t-2xl sm:rounded-[6px]"
+            style={{ height: "min(92vh, 760px)" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* ── Columna izquierda: foto full-height ── */}
-            <div className="relative w-[44%] shrink-0">
+            {/* ── Foto: full-width en mobile, columna izquierda en desktop ── */}
+            <div className="relative h-[200px] shrink-0 md:h-auto md:w-[44%]">
               <Image
                 src={selected.mainImg}
                 alt={selected.title}
@@ -433,86 +433,49 @@ export function ExcursionCards() {
                 className="object-cover"
                 priority
               />
-              {/* Gradiente profundo abajo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10" />
 
-              {/* Badge dificultad / tipo — top left */}
-              <div className="absolute top-4 left-4">
-                {selected.dificultad ? (
-                  <span
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white/90"
-                    style={{
-                      background: "rgba(6,14,10,0.55)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(212,175,100,0.25)",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: DIFF_DOT[selected.dificultad] }} />
-                    {selected.dificultad}
-                  </span>
-                ) : (
-                  <span
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white/80"
-                    style={{
-                      background: "rgba(6,14,10,0.55)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(212,175,100,0.25)",
-                      borderRadius: "2px",
-                    }}
-                  >
-                    <i className="ti ti-car text-[11px] opacity-80" />
-                    Vehículo
-                  </span>
-                )}
-              </div>
+              {/* Botón cerrar — sobre la imagen */}
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-3 right-3 z-10 w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-colors"
+                style={{
+                  background: "rgba(6,14,10,0.55)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  color: "rgba(255,255,255,0.8)",
+                }}
+                aria-label="Cerrar"
+              >
+                <i className="ti ti-x text-base" />
+              </button>
 
               {/* Título sobre la foto */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 py-7">
-                <p className="eyebrow text-[9px] mb-2" style={{ color: "rgba(224,176,85,0.7)" }}>
+              <div className="absolute bottom-0 left-0 right-0 px-4 md:px-6 py-4 md:py-7">
+                <p className="eyebrow text-[9px] mb-1.5" style={{ color: "rgba(224,176,85,0.7)" }}>
                   {selected.tipo}
                 </p>
-                <h2
-                  className="font-serif text-white font-medium leading-tight"
-                  style={{ fontSize: "clamp(22px, 3vw, 30px)" }}
-                >
+                <h2 className="font-serif text-white font-medium leading-tight text-xl md:text-[26px]">
                   {selected.title}
                 </h2>
               </div>
             </div>
 
-            {/* ── Columna derecha: panel editorial oscuro ── */}
+            {/* ── Panel editorial oscuro ── */}
             <div
               className="relative flex-1 flex flex-col overflow-hidden"
               style={{ background: "var(--deepgreen)" }}
             >
-              {/* Noise */}
               <div className="absolute inset-0 noise opacity-[0.08] pointer-events-none" />
 
-              {/* Botón cerrar */}
-              <button
-                onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center transition-colors"
-                style={{
-                  background: "rgba(250,245,236,0.07)",
-                  border: "1px solid rgba(250,245,236,0.12)",
-                  color: "rgba(250,245,236,0.55)",
-                }}
-                aria-label="Cerrar"
-                onMouseOver={(e) => (e.currentTarget.style.color = "rgba(250,245,236,0.95)")}
-                onMouseOut={(e) => (e.currentTarget.style.color = "rgba(250,245,236,0.55)")}
-              >
-                <i className="ti ti-x text-base" />
-              </button>
-
               {/* Contenido scrollable */}
-              <div className="flex-1 overflow-y-auto px-6 pt-6 pb-4 flex flex-col gap-5 relative">
+              <div className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 md:pt-6 pb-3 flex flex-col gap-4 relative">
 
                 {/* Badges de metadata */}
-                <div className="flex flex-wrap gap-2 pr-10">
+                <div className="flex flex-wrap gap-1.5 pr-10">
                   {selected.dificultad && (
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em]"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]"
                       style={{
                         background: "rgba(250,245,236,0.07)",
                         border: "1px solid rgba(250,245,236,0.1)",
@@ -526,7 +489,7 @@ export function ExcursionCards() {
                   )}
                   {selected.duracion && (
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em]"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]"
                       style={{
                         background: "rgba(250,245,236,0.07)",
                         border: "1px solid rgba(250,245,236,0.1)",
@@ -540,7 +503,7 @@ export function ExcursionCards() {
                   )}
                   {selected.distancia && (
                     <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em]"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]"
                       style={{
                         background: "rgba(250,245,236,0.07)",
                         border: "1px solid rgba(250,245,236,0.1)",
@@ -554,12 +517,12 @@ export function ExcursionCards() {
                   )}
                 </div>
 
-                {/* Hairline dorada */}
+                {/* Hairline */}
                 <div className="h-px" style={{ background: "rgba(224,176,85,0.18)" }} />
 
                 {/* Descripción */}
                 <p
-                  className="text-[14px] leading-relaxed"
+                  className="text-[13px] md:text-[14px] leading-relaxed"
                   style={{ color: "rgba(245,241,236,0.68)" }}
                 >
                   {selected.desc}
@@ -569,13 +532,13 @@ export function ExcursionCards() {
                 {selected.gallery.length > 0 && (
                   <div>
                     <p
-                      className="eyebrow text-[9px] mb-2.5"
+                      className="eyebrow text-[9px] mb-2"
                       style={{ color: "rgba(224,176,85,0.45)" }}
                     >
                       Galería de fotos
                     </p>
-                    <div className="grid grid-cols-3 gap-1.5">
-                      {selected.gallery.slice(0, 6).map((img, i) => (
+                    <div className="grid grid-cols-4 md:grid-cols-3 gap-1">
+                      {selected.gallery.slice(0, 8).map((img, i) => (
                         <button
                           key={img}
                           onClick={() => setLbIdx(i)}
@@ -592,7 +555,7 @@ export function ExcursionCards() {
                             className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity"
                             style={{ background: "rgba(6,14,10,0.5)" }}
                           >
-                            <i className="ti ti-zoom-in text-white text-lg" />
+                            <i className="ti ti-zoom-in text-white text-base" />
                           </div>
                         </button>
                       ))}
@@ -603,7 +566,7 @@ export function ExcursionCards() {
 
               {/* CTA sticky */}
               <div
-                className="shrink-0 px-5 py-4 relative"
+                className="shrink-0 px-4 md:px-5 py-3 md:py-4 relative"
                 style={{ borderTop: "1px solid rgba(224,176,85,0.14)" }}
               >
                 <a
@@ -644,7 +607,7 @@ export function ExcursionCards() {
               <button
                 onClick={(e) => { e.stopPropagation(); prevImg(); }}
                 aria-label="Anterior"
-                className="absolute left-4 sm:left-6 grid place-items-center h-12 w-12 rounded-full text-2xl text-white/80 hover:text-white transition-colors"
+                className="absolute left-4 sm:left-6 z-10 grid place-items-center h-14 w-14 rounded-full text-2xl text-white/80 hover:text-white transition-colors"
                 style={{ background: "rgba(250,245,236,0.08)" }}
               >
                 <i className="ti ti-chevron-left" />
@@ -652,7 +615,7 @@ export function ExcursionCards() {
               <button
                 onClick={(e) => { e.stopPropagation(); nextImg(); }}
                 aria-label="Siguiente"
-                className="absolute right-4 sm:right-6 grid place-items-center h-12 w-12 rounded-full text-2xl text-white/80 hover:text-white transition-colors"
+                className="absolute right-4 sm:right-6 z-10 grid place-items-center h-14 w-14 rounded-full text-2xl text-white/80 hover:text-white transition-colors"
                 style={{ background: "rgba(250,245,236,0.08)" }}
               >
                 <i className="ti ti-chevron-right" />
