@@ -6,6 +6,25 @@ import { InkBleed } from "@/components/ink-bleed";
 import { Reveal } from "@/components/reveal";
 import { Contacto } from "@/components/sections/contacto";
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const EXCURSION_KEYS = [
+  { key: "cascadasCosta", dificultad: "Baja", duracion: "3h 30min" },
+  { key: "cienaga", dificultad: "Media", duracion: "8 horas" },
+  { key: "pelado", dificultad: "Baja", duracion: "2h 30min" },
+  { key: "cafayate", dificultad: null, duracion: "8 horas" },
+  { key: "santaMaria", dificultad: null, duracion: "6 horas" },
+  { key: "sosa", dificultad: null, duracion: "4 horas" },
+  { key: "vueltaLago", dificultad: null, duracion: null },
+  { key: "quilmes", dificultad: null, duracion: "6 horas" },
+  { key: "lomaCruz", dificultad: "Baja", duracion: "2h 30min" },
+  { key: "fuerteViejo", dificultad: "Alta", duracion: "6 horas" },
+  { key: "cueva", dificultad: "Baja", duracion: "2h 30min" },
+  { key: "casco", dificultad: "Baja", duracion: "1h 30min" },
+  { key: "alisos", dificultad: "Media", duracion: "3 horas" },
+  { key: "rincon", dificultad: "Media", duracion: "3 horas" },
+] as const;
+
 export async function generateMetadata({
   params,
 }: {
@@ -13,9 +32,38 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "serviciosPage.meta" });
+  const ogLocale = locale === "es" ? "es_AR" : "en_US";
   return {
     title: t("title"),
     description: t("desc"),
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/servicios-y-excursiones`,
+      languages: {
+        es: `${BASE_URL}/es/servicios-y-excursiones`,
+        en: `${BASE_URL}/en/servicios-y-excursiones`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: `${BASE_URL}/${locale}/servicios-y-excursiones`,
+      title: t("title"),
+      description: t("desc"),
+      locale: ogLocale,
+      images: [
+        {
+          url: "/og-servicios.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Excursiones y Trekking en Tafí del Valle — PÓMA",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("desc"),
+      images: ["/og-servicios.jpg"],
+    },
   };
 }
 
@@ -26,6 +74,34 @@ export default async function ServiciosYExcursionesPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "serviciosPage" });
+  const tExc = await getTranslations({ locale, namespace: "excursiones.items" });
+
+  const touristTripSchema = {
+    "@context": "https://schema.org",
+    "@graph": EXCURSION_KEYS.map(({ key, dificultad, duracion }) => ({
+      "@type": "TouristTrip",
+      name: tExc(`${key}.title`),
+      description: tExc(`${key}.desc`),
+      url: `${BASE_URL}/${locale}/servicios-y-excursiones`,
+      touristType: dificultad ? "Trekking" : "Excursión en Vehículo",
+      ...(duracion ? { duration: duracion } : {}),
+      provider: {
+        "@type": "TouristInformationCenter",
+        name: "PÓMA Tafí del Valle",
+        url: BASE_URL,
+      },
+      location: {
+        "@type": "Place",
+        name: "Tafí del Valle",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Tafí del Valle",
+          addressRegion: "Tucumán",
+          addressCountry: "AR",
+        },
+      },
+    })),
+  };
 
   const servicios = [
     {
@@ -50,6 +126,10 @@ export default async function ServiciosYExcursionesPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(touristTripSchema) }}
+      />
       {/* Hero */}
       <section
         className="relative overflow-hidden"

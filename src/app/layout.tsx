@@ -25,7 +25,10 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "PÓMA Tafí del Valle | Turismo Profesional",
     template: "%s | PÓMA Tafí del Valle",
@@ -33,10 +36,30 @@ export const metadata: Metadata = {
   description:
     "Experiencias diseñadas por expertos para el viajero estratégico. Naturaleza, aventura y cultura en Tafí del Valle, Tucumán.",
   icons: {
-    icon: "/faviconpoma.png",
-    shortcut: "/faviconpoma.png",
+    icon: [
+      { url: "/logopoma.ico", type: "image/x-icon" },
+      { url: "/faviconpoma.png", type: "image/png" },
+    ],
+    shortcut: "/logopoma.ico",
     apple: "/faviconpoma.png",
   },
+  openGraph: {
+    type: "website",
+    siteName: "PÓMA Tafí del Valle",
+    title: "PÓMA Tafí del Valle | Turismo Profesional",
+    description:
+      "Excursiones y trekking guiados en Tafí del Valle. Naturaleza, aventura y cultura en los Valles Calchaquíes, Tucumán, Argentina.",
+    locale: "es_AR",
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "PÓMA Tafí del Valle — Excursiones en los Valles Calchaquíes" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PÓMA Tafí del Valle | Turismo Profesional",
+    description:
+      "Excursiones y trekking guiados en Tafí del Valle, Tucumán, Argentina.",
+    images: ["/og-default.jpg"],
+  },
+  robots: { index: true, follow: true, "max-snippet": 160, "max-image-preview": "large" },
 };
 
 export default function RootLayout({

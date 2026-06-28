@@ -116,6 +116,12 @@
     "copyright": "© {year} PÓMA Tafí del Valle · Hecho con cariño en los Valles Calchaquíes",
     "credits": "Técnicos en Turismo · Sergio & Naty"
   },
+  "homePage": {
+    "meta": {
+      "title": "PÓMA Tafí del Valle | Excursiones y Trekking en Tucumán",
+      "desc": "Excursiones guiadas y caminatas en Tafí del Valle con Sergio y Naty. 14 destinos en los Valles Calchaquíes, Tucumán. Grupos reducidos y atención personalizada."
+    }
+  },
   "serviciosPage": {
     "meta": {
       "title": "Servicios y Excursiones",

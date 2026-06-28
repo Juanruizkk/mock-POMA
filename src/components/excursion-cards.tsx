@@ -131,10 +131,19 @@ export function ExcursionCards() {
       }
     };
     window.addEventListener("keydown", onKey);
+    // iOS Safari ignores overflow:hidden on body — use position:fixed to prevent scroll
+    const scrollY = window.scrollY;
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
     };
   }, [selected, lbOpen, closeLb, nextImg, prevImg]);
 
@@ -236,7 +245,7 @@ export function ExcursionCards() {
 
             <div className="relative flex-1 flex flex-col overflow-hidden" style={{ background: "var(--deepgreen)" }}>
               <div className="absolute inset-0 noise opacity-[0.08] pointer-events-none" />
-              <div className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 md:pt-6 pb-3 flex flex-col gap-4 relative">
+              <div className="flex-1 overflow-y-auto px-4 md:px-6 pt-4 md:pt-6 pb-3 flex flex-col gap-4 relative" style={{ overscrollBehavior: "contain" }}>
                 <div className="flex flex-wrap gap-1.5 pr-10">
                   {selected.dificultad && (
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: "rgba(250,245,236,0.07)", border: "1px solid rgba(250,245,236,0.1)", borderRadius: "100px", color: "rgba(245,241,236,0.7)" }}>
@@ -263,7 +272,7 @@ export function ExcursionCards() {
                     <div className="grid grid-cols-4 md:grid-cols-3 gap-1">
                       {selected.gallery.slice(0, 8).map((img, i) => (
                         <button key={img} onClick={() => setLbIdx(i)} className="relative aspect-[4/3] overflow-hidden group/img" style={{ borderRadius: "3px" }} aria-label={t("galeria")}>
-                          <img src={encodeURI(img)} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" />
+                          <img src={encodeURI(img)} alt={`Foto de ${selected.title} — Tafí del Valle`} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" />
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity" style={{ background: "rgba(6,14,10,0.5)" }}>
                             <i className="ti ti-zoom-in text-white text-base" />
                           </div>
@@ -301,7 +310,7 @@ export function ExcursionCards() {
             </>
           )}
           <figure ref={figureRef} className="flex flex-col items-center gap-3 px-16 sm:px-24 w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
-            <img src={encodeURI(gallery[lbIdx!])} alt="" className="max-h-[80vh] w-auto max-w-full object-contain" />
+            <img src={encodeURI(gallery[lbIdx!])} alt={`${selected?.title ?? ""} — Tafí del Valle (${(lbIdx ?? 0) + 1} / ${gallery.length})`} className="max-h-[80vh] w-auto max-w-full object-contain" />
             {gallery.length > 1 && <p className="eyebrow text-[11px] text-white/45">{lbIdx! + 1} / {gallery.length}</p>}
           </figure>
         </div>

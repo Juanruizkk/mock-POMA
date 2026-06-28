@@ -116,6 +116,12 @@
     "copyright": "© {year} PÓMA Tafí del Valle · Made with love in the Calchaquí Valleys",
     "credits": "Tourism Professionals · Sergio & Naty"
   },
+  "homePage": {
+    "meta": {
+      "title": "PÓMA Tafí del Valle | Tours & Trekking in Tucumán",
+      "desc": "Guided tours and hikes in Tafí del Valle with Sergio and Naty. 14 destinations in the Calchaquí Valleys, Tucumán, Argentina. Small groups, personal attention."
+    }
+  },
   "serviciosPage": {
     "meta": {
       "title": "Services & Excursions",
