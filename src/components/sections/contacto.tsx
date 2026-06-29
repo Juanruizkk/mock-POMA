@@ -193,7 +193,7 @@ export function Contacto() {
                 className="eyebrow text-[7px] mt-1"
                 style={{ color: "var(--terra)" }}
               >
-                Tafí · 2025
+                Tafí · {new Date().getFullYear()}
               </span>
             </div>
 
