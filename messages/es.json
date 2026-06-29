@@ -78,7 +78,7 @@
     "waLabel": "WhatsApp · respondemos en persona",
     "waPhone": "+54 9 381 203-2123",
     "igLabel": "Instagram",
-    "igHandle": "@poma.tafidelvalle",
+    "igHandle": "@poma_tafidelvalle",
     "locationLabel": "Ubicación",
     "locationText": "Tafí del Valle, Tucumán, Argentina",
     "formEyebrow": "Dejanos tu mensaje",
@@ -158,7 +158,7 @@
     },
     "aventura": {
       "eyebrow": "Elegí tu aventura",
-      "destinos": "14 destinos",
+      "destinos": "16 destinos",
       "h2a": "Todas las",
       "h2accent": "excursiones",
       "h2b": "del valle"
@@ -253,7 +253,7 @@
       "cueva": {
         "title": "Cueva Los Corrales",
         "tipo": "Trekking",
-        "desc": "Cueva de Los Corrales se ubica en la Quebrada de Los Corrales, en El Infiernillo, y es un sitio arqueológico de alta montaña con evidencias de ocupación humana de hace más de 3.000 años. El sendero para llegar es accesible y el premio es notable: una cueva con restos bien preservados, morteros tallados en la roca y un paisaje de cumbres calchaquíes que pocas personas llegan a ver. Una combinación de naturaleza e historia que sorprende."
+        "desc": "Cueva de Los Corrales se ubica en la Quebrada de Los Corrales, en El Infiernillo, y es un sitio arqueológico de alta montaña con evidencias de ocupación humana de hace más de 7.000 años. El sendero para llegar es accesible y el premio es notable: una cueva con restos bien preservados, morteros tallados en la roca y un paisaje de cumbres calchaquíes que pocas personas llegan a ver. Una combinación de naturaleza e historia que sorprende."
       },
       "casco": {
         "title": "Casco Céntrico",
@@ -269,6 +269,16 @@
         "title": "Cascada El Rincón",
         "tipo": "Trekking",
         "desc": "Entre Tafí del Valle y El Mollar, se esconde un verdadero tesoro natural que recompensa a quienes se animan a caminar sin apuro y con los sentidos bien despiertos. La Cascada de El Rincón aparece como un regalo inesperado en el piedemonte del Cerro Muñoz, en una zona donde el paisaje impone respeto, silencio y una conexión profunda con la naturaleza. Sin señalización oficial ni infraestructura turística, justamente ahí radica su encanto. Es un destino ideal para trekking de dificultad media, recomendado para personas con experiencia básica en montaña."
+      },
+      "vueltaValle": {
+        "title": "Vuelta al Valle",
+        "tipo": "Excursión en Vehículo",
+        "desc": "Un recorrido circular por los puntos más emblemáticos del Valle de Tafí: el Museo Jesuítico, el Parque de los Menhires, la Quebrada del Portugués y los paisajes que cambian de color con cada curva. Un paseo ideal para conocer la historia y la cultura del valle de manera cómoda, con paradas en miradores y sitios arqueológicos que muy pocos llegan a ver. Perfecto para toda la familia y para quienes quieren entender el alma de Tafí sin apuro."
+      },
+      "vueltaNocturna": {
+        "title": "Vuelta Nocturna",
+        "tipo": "Excursión Nocturna en Vehículo",
+        "desc": "Tafí del Valle de noche es otro mundo. Las luces del pueblo se dibujan en el horizonte, el cielo se llena de estrellas y el silencio de la montaña se vuelve protagonista. Esta excursión recorre los rincones más especiales del valle al caer el sol: miradores, caminos de ripio y paradas donde el paisaje nocturno impresiona tanto como el diurno. Una experiencia diferente, íntima y difícil de olvidar para quienes quieren vivir Tafí desde otro ángulo."
       }
     }
   }

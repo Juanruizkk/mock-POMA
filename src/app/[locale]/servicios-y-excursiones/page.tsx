@@ -23,6 +23,8 @@ const EXCURSION_KEYS = [
   { key: "casco", dificultad: "Baja", duracion: "1h 30min" },
   { key: "alisos", dificultad: "Media", duracion: "3 horas" },
   { key: "rincon", dificultad: "Media", duracion: "3 horas" },
+  { key: "vueltaValle", dificultad: null, duracion: null },
+  { key: "vueltaNocturna", dificultad: null, duracion: null },
 ] as const;
 
 export async function generateMetadata({
@@ -336,7 +338,7 @@ export default async function ServiciosYExcursionesPage({
                   style={{ fontSize: "clamp(28px, 4vw, 40px)", color: "rgba(163,79,53,0.18)" }}
                   aria-hidden="true"
                 >
-                  14
+                  16
                 </span>
                 <span
                   className="eyebrow text-[9px]"
@@ -368,11 +370,7 @@ export default async function ServiciosYExcursionesPage({
           </InkBleed>
 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-            <Reveal y={12} className="max-w-md">
-              <p className="text-[15px] leading-relaxed" style={{ color: "var(--muted)" }}>
-                {t("aventura.h2b")}
-              </p>
-            </Reveal>
+            <div />
             <Reveal y={12} className="shrink-0 hidden sm:flex items-center gap-3 pb-1">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center"

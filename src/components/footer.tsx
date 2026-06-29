@@ -5,7 +5,9 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 
 const WHATSAPP = "https://wa.me/5493812032123";
-const INSTAGRAM = "https://instagram.com/poma.tafidelvalle";
+const INSTAGRAM = "https://www.instagram.com/poma_tafidelvalle/";
+const FACEBOOK = "https://www.facebook.com/share/1B2cZY2wr3/";
+const TIKTOK = "https://www.tiktok.com/@pma.taf.del.valle";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -71,17 +73,14 @@ export function Footer() {
 
           <div>
             <p className="eyebrow text-[11px] text-white/50 mb-5">{t("followTitle")}</p>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <a
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
                 className="grid place-items-center h-12 w-12 rounded-full text-xl transition-transform hover:-translate-y-1"
-                style={{
-                  background: "rgba(250,245,236,0.08)",
-                  border: "1px solid rgba(250,245,236,0.15)",
-                }}
+                style={{ background: "rgba(250,245,236,0.08)", border: "1px solid rgba(250,245,236,0.15)" }}
               >
                 <i className="ti ti-brand-whatsapp" />
               </a>
@@ -91,12 +90,29 @@ export function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="grid place-items-center h-12 w-12 rounded-full text-xl transition-transform hover:-translate-y-1"
-                style={{
-                  background: "rgba(250,245,236,0.08)",
-                  border: "1px solid rgba(250,245,236,0.15)",
-                }}
+                style={{ background: "rgba(250,245,236,0.08)", border: "1px solid rgba(250,245,236,0.15)" }}
               >
                 <i className="ti ti-brand-instagram" />
+              </a>
+              <a
+                href={FACEBOOK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="grid place-items-center h-12 w-12 rounded-full text-xl transition-transform hover:-translate-y-1"
+                style={{ background: "rgba(250,245,236,0.08)", border: "1px solid rgba(250,245,236,0.15)" }}
+              >
+                <i className="ti ti-brand-facebook" />
+              </a>
+              <a
+                href={TIKTOK}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="grid place-items-center h-12 w-12 rounded-full text-xl transition-transform hover:-translate-y-1"
+                style={{ background: "rgba(250,245,236,0.08)", border: "1px solid rgba(250,245,236,0.15)" }}
+              >
+                <i className="ti ti-brand-tiktok" />
               </a>
             </div>
             <p className="mt-6 text-[14px] text-white/70 leading-relaxed">

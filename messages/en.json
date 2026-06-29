@@ -78,7 +78,7 @@
     "waLabel": "WhatsApp · we reply in person",
     "waPhone": "+54 9 381 203-2123",
     "igLabel": "Instagram",
-    "igHandle": "@poma.tafidelvalle",
+    "igHandle": "@poma_tafidelvalle",
     "locationLabel": "Location",
     "locationText": "Tafí del Valle, Tucumán, Argentina",
     "formEyebrow": "Leave us a message",
@@ -158,7 +158,7 @@
     },
     "aventura": {
       "eyebrow": "Choose your adventure",
-      "destinos": "14 destinations",
+      "destinos": "16 destinations",
       "h2a": "All the",
       "h2accent": "excursions",
       "h2b": "of the valley"
@@ -201,7 +201,7 @@
     "siguiente": "Next",
     "items": {
       "cascadasCosta": {
-        "title": "Coastal Waterfalls",
+        "title": "La Costa Waterfalls",
         "tipo": "Trekking",
         "desc": "A journey through lush vegetation, flowing water and landscapes that surprise at every step. Perfect for families looking to connect with nature."
       },
@@ -253,7 +253,7 @@
       "cueva": {
         "title": "Cueva Los Corrales",
         "tipo": "Trekking",
-        "desc": "Cueva de Los Corrales is located in the Quebrada de Los Corrales, in El Infiernillo, and is a high-altitude archaeological site with evidence of human occupation dating back over 3,000 years. The trail to get there is accessible and the reward is remarkable: a cave with well-preserved remains, mortars carved into the rock and a landscape of Calchaquí peaks that few people ever see. A combination of nature and history that never fails to surprise."
+        "desc": "Cueva de Los Corrales is located in the Quebrada de Los Corrales, in El Infiernillo, and is a high-altitude archaeological site with evidence of human occupation dating back over 7,000 years. The trail to get there is accessible and the reward is remarkable: a cave with well-preserved remains, mortars carved into the rock and a landscape of Calchaquí peaks that few people ever see. A combination of nature and history that never fails to surprise."
       },
       "casco": {
         "title": "Historic City Center",
@@ -269,6 +269,16 @@
         "title": "El Rincón Waterfall",
         "tipo": "Trekking",
         "desc": "Between Tafí del Valle and El Mollar, a true natural treasure awaits those who dare to walk without hurry, with all their senses awake. El Rincón Waterfall appears as an unexpected gift at the foothills of Cerro Muñoz, in an area where the landscape commands respect, silence and a deep connection with nature. Without official signage or tourist infrastructure, that's precisely where its charm lies. An ideal destination for medium-difficulty trekking, recommended for people with basic mountain experience."
+      },
+      "vueltaValle": {
+        "title": "Valley Loop",
+        "tipo": "Vehicle Excursion",
+        "desc": "A circular tour through Tafí del Valle's most emblematic landmarks: the Jesuit Museum, the Menhires Park, the Quebrada del Portugués and landscapes that change color with every bend in the road. An ideal outing for discovering the valley's history and culture in comfort, with stops at viewpoints and archaeological sites few visitors ever reach. Perfect for families and for anyone who wants to understand the soul of Tafí at their own pace."
+      },
+      "vueltaNocturna": {
+        "title": "Night Valley Tour",
+        "tipo": "Night Vehicle Excursion",
+        "desc": "Tafí del Valle at night is a completely different world. The village lights trace the horizon, the sky fills with stars and the mountain silence takes center stage. This excursion winds through the valley's most special spots after sunset: viewpoints, gravel roads and stops where the night landscape is just as breathtaking as by day. A unique, intimate experience that's hard to forget — for those who want to discover Tafí from a different angle."
       }
     }
   }

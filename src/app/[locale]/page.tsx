@@ -73,7 +73,11 @@ const localBusinessSchema = {
     latitude: -26.8567,
     longitude: -65.7069,
   },
-  sameAs: ["https://www.instagram.com/poma.tafidelvalle"],
+  sameAs: [
+    "https://www.instagram.com/poma_tafidelvalle/",
+    "https://www.facebook.com/share/1B2cZY2wr3/",
+    "https://www.tiktok.com/@pma.taf.del.valle",
+  ],
   priceRange: "$$",
   currenciesAccepted: "ARS",
   areaServed: {
